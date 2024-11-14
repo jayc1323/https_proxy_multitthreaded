@@ -10,11 +10,18 @@
 #include <string.h>
 #include <assert.h>
 #include <stdlib.h>
+#include <openssl/ssl.h>
+#include <openssl/err.h>
 
 #define SOCKET int
 #define BUFFER_SIZE 4096
 #define ISVALIDSOCKET(s) ((s) >= 0)
 #define GETSOCKETERRNO() (errno)
+
+// Open SSL Functions
+void init_SSL(void);
+void destroy_SSL(void);
+void shutdown_SSL(void);
 
 struct client_info {
     socklen_t address_length;
@@ -25,5 +32,9 @@ struct client_info {
     //char *file_requested;
 };
 
+
+
+
+// Server functions
 SOCKET create_socket(const char *port);
 

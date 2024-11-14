@@ -6,6 +6,7 @@ int main (int argc, char* argv[]) {
     assert(argc == 2);
     const char* port_no = argv[1];
 
+    // Create socket
     SOCKET proxy_server = create_socket(port_no);
 
     struct client_info *new_client = calloc(1, sizeof(*new_client));
