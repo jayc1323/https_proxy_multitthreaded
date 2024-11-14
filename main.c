@@ -7,7 +7,7 @@ int main (int argc, char* argv[]) {
     const char* port_no = argv[1];
 
     // Create socket
-    SOCKET proxy_server = create_socket(port_no);
+    SOCKET proxy_server = create_server_socket(port_no);
 
     struct client_info *new_client = calloc(1, sizeof(*new_client));
     assert(new_client != NULL);

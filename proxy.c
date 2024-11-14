@@ -20,7 +20,7 @@ void shutdown_SSL(void) {
 }
 
 
-SOCKET create_socket(const char *port) {
+SOCKET create_server_socket(const char *port) {
     printf("Configuring local address...\n");
     // Establish server variables
     struct addrinfo hints;

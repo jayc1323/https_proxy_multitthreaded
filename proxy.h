@@ -36,5 +36,5 @@ struct client_info {
 
 
 // Server functions
-SOCKET create_socket(const char *port);
+SOCKET create_server_socket(const char *port);
 

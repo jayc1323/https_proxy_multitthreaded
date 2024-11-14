@@ -5,7 +5,8 @@ CC = gcc
 
 #IFLAGS = -I/comp/40/build/include -I/usr/sup/cii40/include/cii
 
-CFLAGS = -g -std=gnu99 -Wall -Wextra -Werror -Wfatal-errors -pedantic 
+CFLAGS = -g -std=gnu99 -Wall -Wextra -Werror -Wfatal-errors -pedantic -I/opt/homebrew/opt/openssl/include #Added last -I/opt... 
+LDFLAGS = -L/opt/homebrew/opt/openssl/lib -lssl -lcrypto # added this line for SSL 
 
 
 
@@ -23,7 +24,8 @@ all: a.out
 
 
 a.out: $(obj)
-	$(CC) $(obj) -o a.out $(CFLAGS)
+	$(CC) $(obj) -o a.out $(CFLAGS) $(LDFLAGS) 
+# Added LDFLAG for SSL 
 
 
 %.o: %.c
