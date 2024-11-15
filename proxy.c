@@ -67,6 +67,60 @@ void send_200(struct client_info* client) {
     printf("200 message successfully sent\n");
 }
 
-void forward_request(char* buffer) {
-    printf("placeholder\n");
+// void forward_request(char* buffer) {
+//     printf("placeholder\n");
+// }
+
+SOCKET connect_to_host(char *hostname, char *port) {
+
+
+    printf("Configuring remote address...\n");
+    struct addrinfo hints;
+    memset(&hints, 0, sizeof(hints));
+    hints.ai_socktype = SOCK_STREAM;
+    hints.ai_family = AF_INET;
+    struct addrinfo *peer_address;
+    if (getaddrinfo(hostname, port, &hints, &peer_address)) {
+        fprintf(stderr, "getaddrinfo() failed. (%d)\n", GETSOCKETERRNO());
+        exit(1);
+    }
+    fprintf(stderr,"Configuring remote address for host: %s, port: %s\n", hostname, port);  
+    
+    // Use strncmp to compare the port with "9049"
+//     if (strncmp(port, "9049", 4) == 0) {
+//         printf("Port is correct: %s\n", port);
+//     } else {
+//         printf("Port is incorrect: %s (expected 9049)\n", port);
+//     }
+
+    printf("Remote address is: ");
+    char address_buffer[100];
+    char service_buffer[100];
+    getnameinfo(peer_address->ai_addr, peer_address->ai_addrlen,
+            address_buffer, sizeof(address_buffer),
+            service_buffer, sizeof(service_buffer),
+            NI_NUMERICHOST);
+    printf("%s %s\n", address_buffer, service_buffer);
+
+    printf("Creating socket...\n");
+    SOCKET server;
+    server = socket(peer_address->ai_family,
+            peer_address->ai_socktype, peer_address->ai_protocol);
+    if (!ISVALIDSOCKET(server)) {
+        fprintf(stderr, "socket() failed. (%d)\n", GETSOCKETERRNO());
+        exit(1);
+    }
+
+    printf("Connecting...\n");
+    if (connect(server,
+                peer_address->ai_addr, peer_address->ai_addrlen)) {
+        fprintf(stderr, "connect() failed. (%d)\n", GETSOCKETERRNO());
+        exit(1);
+    }
+    freeaddrinfo(peer_address);
+
+    printf("Connected.\n\n");
+
+    return server;
 }
+

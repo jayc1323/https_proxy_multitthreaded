@@ -32,6 +32,7 @@ void init_SSL(void);
 void destroy_SSL(void);
 void shutdown_SSL(SSL* cSSL);
 void send_200(struct client_info* new_client);
+SOCKET connect_to_host(char *hostname, char *port) ;
 
 // Server functions
 SOCKET create_server_socket(const char *port);
