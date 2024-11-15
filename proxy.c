@@ -1,7 +1,4 @@
 #include "proxy.h"
-// Globals
-SSL_CTX* sslctx; // SSL framework object
-SSL *cSSL; // SSL connection (?)
 
 void init_SSL(void) {
     SSL_load_error_strings();
@@ -14,7 +11,7 @@ void destroy_SSL(void) {
     EVP_cleanup();
 }
 
-void shutdown_SSL(void) {
+void shutdown_SSL(SSL* cSSL) {
     SSL_shutdown(cSSL);
     SSL_free(cSSL);
 }
@@ -58,4 +55,18 @@ SOCKET create_server_socket(const char *port) {
     }
 
     return socket_listen;
+}
+
+void send_200(struct client_info* client) {
+    const char* c200 = "HTTP/1.1 200 Connection Established\r\n\r\n";
+    int bytes_writ = send(client->socket, c200, strlen(c200), 0);
+    if (bytes_writ < 0) {
+        fprintf(stderr, "Error sending 200 message to client\n");
+        exit(1);
+    }
+    printf("200 message successfully sent\n");
+}
+
+void forward_request(char* buffer) {
+    printf("placeholder\n");
 }

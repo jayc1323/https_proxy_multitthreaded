@@ -18,11 +18,6 @@
 #define ISVALIDSOCKET(s) ((s) >= 0)
 #define GETSOCKETERRNO() (errno)
 
-// Open SSL Functions
-void init_SSL(void);
-void destroy_SSL(void);
-void shutdown_SSL(void);
-
 struct client_info {
     socklen_t address_length;
     struct sockaddr_storage address;
@@ -32,9 +27,13 @@ struct client_info {
     //char *file_requested;
 };
 
-
-
+// Open SSL Functions
+void init_SSL(void);
+void destroy_SSL(void);
+void shutdown_SSL(SSL* cSSL);
+void send_200(struct client_info* new_client);
 
 // Server functions
 SOCKET create_server_socket(const char *port);
+void forward_request(char* buffer);
 
