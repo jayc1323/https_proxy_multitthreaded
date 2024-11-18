@@ -1,11 +1,214 @@
 #include "proxy.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <assert.h>
+#include <unistd.h>
+#include <sys/select.h>
 
-// Globals
-// SSL_CTX* sslctx; // SSL framework object
-// SSL* cSSL; // SSL connection (?)
+#define BUFFER_SIZE 4096
+#define MAX_CLIENTS 100000
+
+int main1(char *port);
+int main2(char *port);
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+int main(int argc,char *argv[]){
+    if(argc != 3){
+        fprintf(stderr,"Usage : ./a.out port_no -ssl/tunnel");
+        exit(1);
+    }
+    if (strcmp(argv[2],"-ssl")==0) {
+        return main1(argv[1]);
+    }
+    else if (strcmp(argv[2],"-tunnel")==0) {
+        return main2(argv[1]);
+    } else {
+        fprintf(stderr,"Usage : ./a.out port_no -ssl/tunnel");
+        exit(1);
+         
+    }
+    
+}
+/*----------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
-// int main (int argc, char* argv[]) {
+
+/*-----------------------------------------------------------------------------------------------------------------------------------*/
+int main2(char *port_no) {
+
+    int *endpoints_array = malloc(MAX_CLIENTS * sizeof(int));
+    // Create server socket
+    SOCKET proxy_server = create_server_socket(port_no);
+
+    printf("Proxy server listening on port %s...\n", port_no);
+    for (int i = 0; i < MAX_CLIENTS; i++){
+        endpoints_array[i] = -1;
+    }
+   
+
+    while (1) {
+        fd_set readfds; 
+        FD_ZERO(&readfds);
+        FD_SET(proxy_server, &readfds);
+            
+
+        int max_sd = proxy_server;
+        for (int i = 0; i < MAX_CLIENTS; i++) {
+            if (endpoints_array[i] != -1) {
+                FD_SET(i, &readfds);
+                if(i > max_sd) {
+                    max_sd = i;
+                }
+            }
+        }
+
+
+        fprintf(stderr,"Waiting for message or connection request\n");    
+        
+        int activity = select(max_sd + 1, &readfds, NULL, NULL, NULL);
+        if (activity < 0) {
+            fprintf(stderr, "select() error\n");
+            break;
+        }
+
+        for (SOCKET socket = 0; socket <= max_sd; socket++) {
+            if(FD_ISSET(socket, &readfds)) {
+                if (socket == proxy_server) {
+            /*IF THERE IS A CONNECTION REQUEST TO THE LISTENING SOCKET
+               , ACCEPT CONNECTION , READ THE REQUEST , CONNECT TO SERVER ,
+               IF SUCCESSFUL , ADD BOTH CLIENT AND SERVER SOCKET TO READ_FDS
+               AND HAVE A MAPPING FROM CLIENT->SERVER AND SERVER->CLIENT
+               TO KNOW WHERE TO SEND FUTURE MESSAGES
+            */
+                    socklen_t address_length;
+                    struct sockaddr_storage address;
+                    SOCKET client_socket = accept(proxy_server, 
+                                     (struct sockaddr*)&(address),
+                                     &(address_length));
+
+                    if (!ISVALIDSOCKET(client_socket)) {
+                        fprintf(stderr, "accept() failed: %d\n", GETSOCKETERRNO());
+                        
+                        continue;
+                    }
+
+                  
+                    printf("Client connected (socket %d).\n", client_socket);
+
+                    // Receive client request
+                    char buffer[BUFFER_SIZE];
+                    int bytes_received = recv(client_socket, buffer, BUFFER_SIZE - 1, 0);
+                    if (bytes_received <= 0) {
+                        fprintf(stderr, "Failed to receive data from client.\n");
+                        close(client_socket);
+                        
+                        continue;
+                    }
+                    buffer[bytes_received] = '\0'; // Null-terminate the request
+
+                    printf("Received client request:\n%s\n", buffer);
+
+                    // Parse the Host header
+                    char *host_header = strstr(buffer, "Host: ");
+                    if (!host_header) {
+                        fprintf(stderr, "Missing Host header in request.\n");
+                        close(client_socket);
+                        
+                        continue;
+
+                    }
+
+                    host_header += 6; // Skip "Host: "
+                    char *end_of_host = strstr(host_header, "\r\n");
+                    if (end_of_host) *end_of_host = '\0';
+
+                    char *colon = strchr(host_header, ':');
+                    char port[6] = "443";
+                    if (colon) {
+                        strncpy(port, colon + 1, sizeof(port) - 1);
+                        *colon = '\0'; // Separate hostname from port
+                    }
+
+                    printf("Connecting to server %s on port %s...\n", host_header, port);
+
+                    // Connect to the target server
+                    SOCKET server_socket = connect_to_host(host_header, port);
+                    if (!ISVALIDSOCKET(server_socket)) {
+                        fprintf(stderr, "Failed to connect to server %s:%s\n", host_header, port);
+                        close(client_socket);
+                       
+                        continue;
+                    }
+                    int s200 = send_200(client_socket);
+                    if(s200<0){
+                        close(client_socket);
+                        close(server_socket);
+                        continue;
+                    }
+
+                    // Send HTTP 200 to client
+                    FD_SET(client_socket, &readfds);
+                    FD_SET(server_socket, &readfds);
+                    if(client_socket>max_sd){
+                        max_sd = client_socket;
+                    }
+                    if(server_socket>max_sd){
+                        max_sd = server_socket;
+                    }
+
+                    endpoints_array[client_socket] = server_socket;
+                    endpoints_array[server_socket] = client_socket;
+                    
+                
+                } else {
+                    //DETERMINE THE OTHER END POINT FOR THIS SOCKET
+                    //SEND MESSAGE
+                    char buffer[4096];
+                    int bytes_recv = recv(socket,buffer,4096,0);
+        
+                    if (bytes_recv <= 0) {
+                        // fprintf(stderr, "Client or server disconnected.\n");
+                        // fprintf(stderr,"Also disconnecting other endpoint\n");
+                        close(socket);
+                        close(endpoints_array[socket]);
+                        FD_CLR(socket,&readfds);
+                        FD_CLR(endpoints_array[socket],&readfds);
+                        int s = endpoints_array[socket];
+                        endpoints_array[socket] = -1;
+                        endpoints_array[s] = -1;
+                        
+                        continue;
+                    }
+                    // printf("Received message from one endpoint\n");
+                    int bytes_sent = send(endpoints_array[socket], buffer, bytes_recv, 0);
+        
+                    if (bytes_sent <= 0) {
+                        // fprintf(stderr, "Client or server disconnected.\n");
+                        // fprintf(stderr, "Also disconnecting other endpoint\n");
+                        close(socket);
+                        close(endpoints_array[socket]);
+                        FD_CLR(socket, &readfds);
+                        FD_CLR(endpoints_array[socket], &readfds);
+                          int s = endpoints_array[socket];
+                        endpoints_array[socket] = -1;
+                        endpoints_array[s] = -1;
+                        continue;
+                    }
+                    // printf("Message from client/server send to other endpoint\n");
+                }
+            }
+        }
+    }
+    close(proxy_server);
+    free(endpoints_array);
+    return 0;
+}
+/*-----------------------------------------------------------------------------------------------------------------------------------------*/
+int main1(char *port_no){
+    (void)port_no;
+    return 0;
+}
 //     assert(argc == 2);
 //     const char* port_no = argv[1];
 
@@ -88,113 +291,3 @@
 
 
 //     return 0;
-// }
-
-int main(int argc, char *argv[]){
-
-    //setup socket
-    //accept connection
-    //get connect request
-    //connect to server tcp 
-    //send http 200
-    //forward messages
-        assert(argc == 2);
-    const char* port_no = argv[1];
-
-//     // Create socket
-    SOCKET proxy_server = create_server_socket(port_no);
-
-    // Initialize SSL framework
-    init_SSL();
-
-    struct client_info *new_client = calloc(1, sizeof(*new_client));
-    assert(new_client != NULL);
-
-    SOCKET client_socket = accept(proxy_server, 
-                                 (struct sockaddr*)&(new_client->address),
-                                 &(new_client->address_length));
-    
-    if (!ISVALIDSOCKET(client_socket)) {
-        fprintf(stderr, "accept() failed: %d\n", GETSOCKETERRNO());
-        free(new_client);
-        return 1;
-    } else {
-        printf("%d\n", client_socket);
-    }
-
-    new_client->socket = client_socket;
-
-    int bytes_recvd = recv(new_client->socket,
-                           new_client->request, BUFFER_SIZE, 0);
-    if (bytes_recvd < 0) { 
-        fprintf(stderr, "Bytes_read < 0\n");
-        free(new_client);
-        exit(1);
-    }
-
-    fprintf(stderr,"%s\n",new_client->request);
-    char *host_header = strstr(new_client->request, "Host: ");
-        char *port = NULL;
-
-        if (host_header) {
-            host_header += 6;  //"Host: "
-            char *end_host = strstr(host_header, "\r\n");
-            if (end_host) *end_host = 0;
-
-            char *colon = strstr(host_header, ":");
-            if (colon) {
-                *colon = 0;
-                port = malloc(50);
-                assert(port);
-                strncpy(port, colon + 1, 50 - 1);
-                port[50 - 1] = '\0';
-            } else {
-                port = strdup("443");  // Deflt 80
-            }
-
-
-
-                        }
-                         char *hostname = strdup(host_header);
-
-
-             SOCKET server = connect_to_host(hostname, port);
-             //send 200 if server
-             send_200(new_client);
-
-             while(1){
-                fprintf(stderr,"Waiting for msg from client\n");
-                char *client_buf = malloc(BUFFER_SIZE);
-                int cb = recv(new_client->socket,client_buf,BUFFER_SIZE,0);
-                if(cb<=0){
-                    fprintf(stderr,"error recv msg\n");
-                    exit(1);
-                }
-                int bs = send(server,client_buf,cb,0);
-                if(bs<=0){
-                    fprintf(stderr,"error sending msg to server\n");
-                }
-                char *server_buf = malloc(BUFFER_SIZE);
-                int as = recv(server,server_buf,BUFFER_SIZE,0);
-                if(as<=0){
-                    fprintf(stderr,"error recv msg from server\n");
-                    exit(1);
-                }
-                int za = send(new_client->socket,server_buf,as,0);
-                if(za<=0){
-                    fprintf(stderr,"error sending msg to client\n");
-                }
-                free(client_buf);
-                free(server_buf);
-                
-             }
-
-             close(server);
-             close(new_client->socket);
-
-
-
-
-
-
-}
