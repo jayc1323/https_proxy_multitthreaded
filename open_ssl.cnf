@@ -1,0 +1,20 @@
+[ req ]
+distinguished_name = Medford Proxy
+x509_extensions = v3_ca  
+prompt = yes
+
+[ Medford Proxy ]
+countryName = US
+stateOrProvinceName = MA
+localityName = Boston
+0.organizationName = Tufts 
+organizationalUnitName = comp112
+commonName = comp112Proxy
+emailAddress = jayc13231999@gmail.com
+
+[ v3_ca ]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints = critical, CA:TRUE
+keyUsage = critical, digitalSignature, cRLSign, keyCertSign
+extendedKeyUsage = serverAuth, clientAuth

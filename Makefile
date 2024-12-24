@@ -1,19 +1,19 @@
 
 
 CC = gcc
-CFLAGS = -g -std=gnu99 -Wall -Wextra -Werror -Wfatal-errors -pedantic
-INCLUDES = -I/usr/include/openssl
-LDFLAGS = -L/usr/lib/openssl -lssl -lcrypto
+CFLAGS = -g -std=gnu99 -Wall -Wextra -Werror -Wfatal-errors $(INCLUDES) -pedantic
+INCLUDES = -I/usr/include/openssl -I/usr/include/curl
+LDFLAGS = -L/usr/lib/openssl -lssl -lcrypto -lpthread -lcurl
 
 
-src = main.c proxy.c
+src = proxy_pthread.c proxy.c cJSON.c
 obj = $(src:.c=.o)
 
-all: a.out
+all: proxy
 
 
-a.out: $(obj)
-	$(CC) $(obj) -o a.out $(CFLAGS) $(LDFLAGS)
+proxy: $(obj)
+	$(CC) $(obj) -o proxy $(CFLAGS) $(LDFLAGS)
 
 
 %.o: %.c
@@ -22,4 +22,4 @@ a.out: $(obj)
 
 .PHONY: clean
 clean:
-	rm -f $(obj) a.out
+	rm -f $(obj) proxy

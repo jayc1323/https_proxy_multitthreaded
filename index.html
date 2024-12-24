@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Proxy</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background: linear-gradient(180deg, #444654, #343541);
+        }
+
+        header {
+            background-color: #343541;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .response-box {
+            background-color: #555;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            margin-bottom: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-size: 1.2em;
+        }
+
+        .message-pair {
+            margin-bottom: 20px;
+        }
+
+        .request-message {
+            text-align: left;
+            color: #bbb;
+            font-size: 1em;
+            background: #444;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 70%;
+            word-wrap: break-word;
+        }
+
+        .response-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .response-message {
+            text-align: center;
+            color: #fff;
+            font-size: 1em;
+            background: #10a37f;
+            padding: 10px;
+            border-radius: 8px;
+            flex: 1;
+            word-wrap: break-word;
+        }
+
+        .response-label {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .input-bar {
+            background-color: #343541;
+            padding: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            position: sticky;
+            bottom: 0;
+            flex-wrap: wrap;
+        }
+
+        .input-bar textarea, .input-bar input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            resize: none;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.2s ease;
+            min-height: 60px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .input-bar textarea {
+            min-height: 100px;
+        }
+
+        .input-bar input {
+            max-height: 60px;
+        }
+
+        .input-bar textarea:focus, .input-bar input:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(16, 163, 127, 0.8);
+        }
+
+        .input-bar button {
+            background-color: #10a37f;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .input-bar button:hover {
+            background-color: #0d8e6b;
+        }
+
+        .input-bar button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Large Language Model Aggregator</h1>
+    </header>
+    <div class="main-container" id="message-container">
+        <div class="response-box" id="response-box"></div>
+    </div>
+    <div class="input-bar">
+        <textarea id="prompt" rows="2" placeholder="Send a message..."></textarea>
+        <textarea id="system" rows="1" placeholder="Enter system instruction..."></textarea>
+        <input id="lastk" type="number" min="1" value="5" placeholder="Last K">
+        <input id="temperature" type="number" step="0.1" min="0" max="2" value="0.7" placeholder="Temperature">
+        <button onclick="generateResponse()" id="generate-button">Generate</button>
+        <button onclick="clearMessages()">Clear</button>
+    </div>
+
+    <script>
+        async function generateResponse() {
+            try {
+                const prompt = document.getElementById("prompt").value;
+                const system = document.getElementById("system").value;
+                const lastk = document.getElementById("lastk").value;
+                const temperature = document.getElementById("temperature").value;
+
+                if (!prompt.trim()) {
+                    alert("Prompt cannot be empty");
+                    return;
+                }
+
+                // Add new request-response pair placeholders
+                const responseBox = document.getElementById("response-box");
+
+                const messagePair = document.createElement("div");
+                messagePair.className = "message-pair";
+
+                const requestMessage = document.createElement("div");
+                requestMessage.className = "request-message";
+                requestMessage.innerText = prompt;
+
+                // Placeholder responses for GPT-4, Claude, and Phi
+                const responseContainer = document.createElement("div");
+                responseContainer.className = "response-container";
+
+                const gpt4Response = document.createElement("div");
+                gpt4Response.className = "response-message";
+                gpt4Response.innerHTML = `<span class="response-label">GPT-4:</span><br>Fetching response...`;
+
+                const claudeResponse = document.createElement("div");
+                claudeResponse.className = "response-message";
+                claudeResponse.innerHTML = `<span class="response-label">Claude:</span><br>Fetching response...`;
+
+                const phiResponse = document.createElement("div");
+                phiResponse.className = "response-message";
+                phiResponse.innerHTML = `<span class="response-label">Microsoft Phi:</span><br>Fetching response...`;
+
+                // Append all responses to the container
+                responseContainer.appendChild(gpt4Response);
+                responseContainer.appendChild(claudeResponse);
+                responseContainer.appendChild(phiResponse);
+
+                // Append the request and responses to the message pair
+                messagePair.appendChild(requestMessage);
+                messagePair.appendChild(responseContainer);
+
+                // Append the message pair to the response box
+                responseBox.appendChild(messagePair);
+
+                // Send the request to the proxy
+                const response = await fetch("/generate-response", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ prompt, system, lastk, temperature }),
+                });
+
+                const results = await response.json();
+
+                // Update response messages with actual results
+                gpt4Response.innerHTML = `<span class="response-label">GPT-4:</span><br>${results.gpt4 ? JSON.parse(results.gpt4).result || "No response" : "No response"}`;
+                claudeResponse.innerHTML = `<span class="response-label">Claude:</span><br>${results.claude ? JSON.parse(results.claude).result || "No response" : "No response"}`;
+                phiResponse.innerHTML = `<span class="response-label">Microsoft Phi:</span><br>${results.phi ? JSON.parse(results.phi).result || "No response" : "No response"}`;
+
+                // Clear input fields
+                document.getElementById("prompt").value = "";
+                document.getElementById("system").value = "";
+            } catch (error) {
+                console.error("Error:", error.message);
+                alert("Error: " + error.message);
+            }
+        }
+
+        function clearMessages() {
+            document.getElementById("response-box").innerHTML = "";
+        }
+    </script>
+</body>
+</html>
+
+

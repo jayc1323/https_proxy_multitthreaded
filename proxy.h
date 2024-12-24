@@ -2,6 +2,7 @@
 #include <time.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <fcntl.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <netdb.h>
@@ -17,27 +18,30 @@
 #include <openssl/pem.h>
 #include <openssl/rsa.h>
 #include <openssl/evp.h>
+#include <openssl/bn.h>
 
 
 #define SOCKET int
-#define BUFFER_SIZE 4096
 #define ISVALIDSOCKET(s) ((s) >= 0)
 #define GETSOCKETERRNO() (errno)
 
-struct client_info {
-    socklen_t address_length;
-    struct sockaddr_storage address;
-    SOCKET socket;
-    char request[BUFFER_SIZE];
-    int received;
-    //char *file_requested;
-};
+// struct client_info {
+//     socklen_t address_length;
+//     struct sockaddr_storage address;
+//     SOCKET socket;
+//     char request[BUFFER_SIZE];
+//     int received;
+//     //char *file_requested;
+// };
 
 // Certificate management functions
 EVP_PKEY *load_root_key(const char *key_path);
 X509 *load_root_cert(const char *cert_path);
-X509 *generate_client_cert(X509 *root_cert, EVP_PKEY *root_key, const char *hostname);
+SSL* ssl_with_server(int server_socket);
+X509 *generate_client_cert(X509 *root_cert, EVP_PKEY *root_key, 
+                           const char *hostname, EVP_PKEY **client_key);
 SSL_CTX *setup_ssl_context(X509 *client_cert, EVP_PKEY *client_key);
+int set_nonblocking(int socket_fd);
 
 // OpenSSL Functions
 void init_SSL(void);

@@ -1,0 +1,3448 @@
+HTTP/1.1 304 Not Modified
+Date: Sat, 14 Dec 2024 18:04:47 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Connection: Keep-Alive
+Keep-Alive: timeout=5, max=100
+ETag: "1e4d-6202eb31db2bb"
+
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 18:05:33 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Wed, 21 Aug 2024 10:06:45 GMT
+ETag: "1e4d-6202eb31db2bb"
+Accept-Ranges: bytes
+Content-Length: 7658
+Content-Type: text/html; charset=UTF-8
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>CS 40</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/halligan.css" />
+
+  <script type='text/javascript'>
+
+    var old_shown = 0;
+    //
+    // show old news or hide old news
+    //
+    function toggle_old()
+    {
+        var news_block = document.getElementById('old_news');
+        var click_here = document.getElementById('old_news_toggle');
+
+        if ( old_shown == 0 ) {
+            news_block["style"]["display"] = "block";
+            click_here.innerHTML = "[hide old news]";
+            old_shown = 1;
+        } else {
+            news_block["style"]["display"] = "none";
+            click_here.innerHTML = "[show old news]";
+            old_shown = 0;
+        }
+    }
+  </script>
+  <style>
+    .sup {
+        vertical-align: super;
+        font-size: smaller;
+    }
+  </style>
+  <script src="piazza.js"></script>
+</head>
+<body>
+<div id="wrap"> <a id="top"></a>
+  <div id="header">
+    <script src="semester_header.js"></script>
+    <div  id="nav">
+
+      <ul>
+        <li id="current"><a class="navlinks" href=".">Home</a></li>
+        <li><a href="calendar/calendar.html">Calendar</a></li>
+        <li><a href="assignments/assignments.html">Assignments</a></li>
+        <li><a href="policy/admin.html">Admin</a></li>
+        <li><a href="resources/resources.html">Resources</a></li>
+      </ul>
+
+    </div>
+  </div>
+  <div id="content-outer" class="clear">
+    <div id="content-wrap" >
+      <div class="content">
+
+      <h2>Course Summary</h2>
+
+      <div>Welcome to CS 40 - Machine Structure and Assembly Language Programming! CS 40 will give you two important experiences:
+        <ol style="margin:12px 0px !important;">
+
+          <li>
+          You will turn the corner from introductory programming to 
+          programming as a professional.
+          </li>
+
+          <li>
+          You will study in detail the structure of modern computers, and
+          that in turn will add greatly to your understanding of how computer
+          hardware, operating systems, compilers, language runtimes, and other
+          tools work together to influence the performance of your programs.
+          </li>
+
+        </ol>
+      
+        These two goals are very closely related: all good computer professionals
+        know how to apply deep knowledge of computing systems to their programming
+        projects and to their research in computer science. Whether you are a
+        newly confirmed CS major, someone who is considering a CS major but is
+        unsure, or a student from another field who is interested in a deep look
+        at some of the most important technologies of our time, CS 40 should
+        give you an intense, realistic and (we hope!) exciting look at how modern
+        computers work.
+
+      </div>
+
+      <h3>New CS 40 Students</h3>
+      <div>
+        Many students are eager to get a head start on the CS 40
+        material so that they can arrive as prepared as possible to
+        the first day of class. Here is what you can do to prepare:
+        <ol style="margin:12px 0px !important;">
+        	<li>When CS 40 begins, you will be making an immediate
+        	transition from C++ to C. Be ready for
+        	this. Our <a target="_blank"
+        	href="resources/resources.html">resources page</a>
+        	provides some great tutorials on this transition.</li>
+        	<li>Read our <a target="_blank"
+				href="policy/admin.html">admin page</a>.
+		  This page
+                  is a comprehensive review of our course
+                  policies. You will be expected to adhere to these
+                  policies, so a good start is to know what they
+                  are. Pay particular attention to
+                  our <a target="_blank"
+                  href="docs/coding-standards.html">course coding
+                  standands</a> and our <a target="_blank"
+                  href="docs/pair-conduct.html">pair programming
+                  conduct guidelines</a>.</li>
+        	<li>Visit the
+        	course <a href="javascript:piazzaLink('/home')">Piazza
+        	forum.</a> (Your instructor will add you to the Piazza
+        	roster at the start of the term.)</li>
+        	<li>Make sure that you have access to our course
+        	textbooks, which are listed below. In particular, the
+        	Hanson book describes the Swiss army knife of tools
+        	that will be provided to you for use throughout the
+        	semester.</li>
+            <li>Familiarize yourself with our <a target="_blank"
+            href="docs/halligan-helper.html">Halligan
+            Helper</a> system. This is how students can request help
+            from TAs during office hours.
+                </li> 
+      </div>
+
+      <h3>Textbooks</h3>
+      <div>
+      The following two textbooks are required:<br><br>
+      <b>Textbook: </b><a href="http://drh.github.io/cii/"><i>C Interfaces and Implementations</i></a> by David R. Hanson<br>
+      <b>ISBN:</b> 9780201498417 <br>
+        <b>Online access:</b>
+        <!-- Spring 2024:  this link works, but the library sent the other, which looks
+             more helpful (telling folks to sign in) -->
+        <!-- <a href="https://learning.oreilly.com/library/view/c-interfaces-and/9780321562807/?ar">via Tufts Library</a><br> -->
+        <a target = "_blank" href = "https://tufts.primo.exlibrisgroup.com/discovery/fulldisplay?docid=alma991017685329403851&context=L&vid=01TUN_INST:01TUN">via Tufts Library</a><br>
+
+
+      There is also a <a href="http://ciibook.webhop.net/pdf/quickref.pdf">PDF
+        Quick Reference</a>.<br><br>
+      <b>Textbook: </b><a href="http://csapp.cs.cmu.edu/"><i>Computer Systems: A Programmer's Perspective</i>, 3rd edition</a> by Bryant and O'Hallaron<br>
+      <b>ISBN:</b> 9780134092669 <br>
+      <b>Important:</b> Make sure you avoid the "International" or
+      "Global" version of this textbook, which is in paperback or the
+      Amazon ebook. While substantially cheaper, many of the chapter
+      practice problems have been rewritten by the publisher and
+      contain many errors and inconsistencies.<br>
+      <br>
+      Additional books that you may fine useful are listed on our <a href="resources/resources.html">resources page</a>.
+      </div>
+
+      <h3>Schedule</h3>
+      <div>
+      <b>Lectures:</b> Tuesdays / Thursdays 1:30 - 2:45 PM EST<br>
+      <b>Location:</b> SEC Robinson 253 <br><br>
+      <b>Labs:</b> Friday 10:30 – 11:45 AM, 12:00 – 1:15 PM, and 1:30 – 2:45 PM EST<br>
+      <b>Location:</b> Joyce Cummings Center 235 and 240 <br><br>
+      <b>Midterm Exam:</b> See the <a href="calendar/calendar.html">course calendar</a><br>
+      <b>Final Exam:</b> Tuesday, December 17th, 12-2pm
+      </div>
+
+      <h3>Staff</h3>
+      <div>
+      <b>Instructor:</b> Megan Monroe<br/>
+      <b>Email:</b> <a href = "mailto:megan.monroe@tufts.edu"><code>megan.monroe@tufts.edu</code></a><br/>
+      <b>Office hours:</b> Wednesday 1:30-3:30pm, JCC 440D<br>
+      <br>
+      Our teaching fellows are Dan Bergen, Valerie Zhang, Sarah Svahn, and Julia Zelevinski.  We also have an army of undergraduate
+      teaching assistants who will hold office hours.  Schedules for
+      the undergraduate assistants will be posted and updated on
+      Piazza.  <br> <br>
+
+      Please refer to our <a href="policy/admin.html#sec-help">admin page</a>
+      for guidelines on how to contact our course staff with questions and<div id="chatbot"><script src="/chatbot.js"></script></div>
+      feedback.
+    </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-bottom">
+    <p> <a href=".">Home</a></p>
+
+  </div>
+</div>
+</body>
+</html>
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 18:22:41 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Fri, 09 Feb 2024 10:48:19 GMT
+ETag: "102a-610f0aa8a0e1b"
+Accept-Ranges: bytes
+Content-Length: 4197
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/html; charset=UTF-8
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+        <title>COMP 170</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css"
+                media="screen"
+                href="tufts-comp.css" />
+
+        <script type='text/javascript'>
+
+        var old_shown = 0;
+        //
+        // show old news or hide old news
+        //
+        function toggle_old()
+        {
+                var news_block = document.getElementById('old_news');
+                var click_here = document.getElementById('old_news_toggle');
+
+                if ( old_shown == 0 )
+                {
+                        news_block["style"]["display"] = "block";
+                        click_here.innerHTML = "[hide old news]";
+                        old_shown = 1;
+                }
+                else
+                {
+                        news_block["style"]["display"] = "none";
+                        click_here.innerHTML = "[show old news]";
+                        old_shown = 0;
+                }
+        }
+
+        </script>
+<style>
+.sup {
+vertical-align: super;
+font-size: smaller;
+}
+</style>
+</head>
+<body>
+<div id="wrap"> <a id="top"></a>
+  <div id="header">
+    <script src="semester_header.js"></script>
+    <div  id="nav">
+
+      <ul>
+        <li id="current"><a class="navlinks" href=".">Home</a></li>
+        <li><a href="schedule/schedule.html">Schedule</a></li>
+        <li><a href="policy/policy.html">Policy</a></li>
+        <li><a href="resources/resources.html">Resources</a></li>
+
+      </ul>
+
+    </div>
+  </div>
+  <div id="content-outer" class="clear">
+    <div id="content-wrap" >
+      <div class="content">
+
+      <p>This course is intended as an introduction to the theory
+                of computation for senior level undergraduates and
+                graduate students looking for background material
+                in theory. The major topics within the course
+                include: models of computation, finite automata,
+                regular languages, context free grammars, turing machines,
+                undecidability, infeasibility, diagonalizations, nondeterminism,
+                information theory, time vs space, and complexity classes.</p>
+
+      <p><b>Prerequisites:</b> MATH/COMP 61 and COMP 15 are recommended, but any prior course with rigorous mathematical proofs should suffice</p>
+      
+      <p><b>Primary Textbook: </b><a target="_blank" href="https://www.amazon.com/Introduction-Theory-Computation-Sipser/dp/8131525295/ref=sr_1_1?crid=25SOINE160A9I&keywords=Introduction+to+the+Theory+of+Computation+by+Michael+Sipser&qid=1657724171&s=books&sprefix=introduction+to+the+theory+of+computation+by+michael+sipser%2Cstripbooks%2C67&sr=1-1"><i>Introduction to the Theory of Computation</i></a> by Michael Sipser
+      <br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/G%C3%B6dels-Proof-Ernest-Nagel/dp/0814758371"><i>G&ouml;del's Proof</i></a> by Ernest Nagel and James Newman<br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/Annotated-Turing-Through-Historic-Computability/dp/0470229055/ref=sr_1_1?keywords=the+annotated+turing&qid=1657724316&s=books&sprefix=the+annotataed+tu%2Cstripbooks%2C80&sr=1-1"><i>The Annotated Turing</i></a> by Charles Petzold<br>
+      </p>
+      
+     
+
+<p><b>Instructor:</b> Megan Monroe<br/>
+<b>Email:</b> <a href = "mailto:mmonroe@cs.tufts.edu"> mmonroe@cs.tufts.edu</a><br/>
+<b>Office:</b> Joyce Cummings Center, Room 440D <br/>
+<b>Office Hours:</b> Wednesday, 2:00-4:00pm
+</p>
+
+<p>
+        <b>Class Location:</b> Joyce Cummings Center, Room 270 <br/>
+        <b>Time:</b> (Tues/Thurs) 1:30 - 2:45am<br>
+        <b>Final Exam:</b> Tuesday, May 7th, 3:30-5:30pm
+</p>
+
+<p><b>Course Piazza:</b>
+        <a target="_blank" href="https://piazza.com/tufts/spring2024/cs170">CS170 Spring 2024</a>
+</p>
+
+<p><b>Teaching Fellows:</b>
+<br>Jasper Geer
+<br>Nate Nemeth
+</p>
+
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+<div id="chatbot"><script src="/chatbot.js"></script></div></body>
+</html>
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 18:22:42 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Wed, 13 Jul 2022 11:01:44 GMT
+ETag: "1295-5e3adb5ec0c83"
+Accept-Ranges: bytes
+Content-Length: 4757
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/css
+Keep-Alive: timeout=5, max=99
+Connection: Keep-Alive
+
+
+body {
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #23253f;    
+        background: #FFFFFF;         
+        border-bottom: 30px solid #FFFFFF; 
+        text-align: center;
+        margin: 0;
+}
+/* Links */
+a:link, a:visited { 
+        text-decoration: underline;
+        color: #23253f; 
+}
+a:hover {
+        text-decoration: underline;     
+}
+a.more-link {
+        padding-bottom: 2px;
+        font-weight: bold;      
+        border-bottom: 1px dotted #AE855C;      
+}
+a:hover.more-link {
+        text-decoration: none;
+}
+/* Headers */
+h1, h2, h3 {
+        color: #23253f;
+        margin: 10px 0px 5px 0px;      
+}
+h1 { font-size: 3.3em; font-weight: normal; letter-spacing: -2.0px; }
+h2 { font-size: 2.8em; font-weight: normal; color: #23253f; }
+h3 { font-size: 1.6em; font-weight: normal; letter-spacing: -1.0px; color: #23253f; border-bottom: 1px solid #23253f; padding-bottom: 5px; margin-top: 12px; } 
+
+h4 {
+    color: #23253f;
+    font-size: 1.3em; 
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 0px !important;
+    margin-block-end: .5em;
+}
+
+/* Lists */
+ul, ol {
+        margin: 12px 30px;
+        padding: 0 25px;
+}
+ul { list-style: square; }
+ol { list-style: decimal; }
+
+dt {
+  font-weight: bold;
+  color: #22312F;
+}
+dd {
+  padding-left: 20px; 
+}
+
+p, dl { padding: 12px 25px; }
+
+/* Images */
+img {
+    background: #FFFFFF;
+    border: none;
+    padding: 0;
+}
+
+
+code {
+        font: 500 1em/1.5em 'Lucida Console', 'Courier New', Monospace;
+        font-weight: bold;
+}
+
+blockquote {
+        margin: 12px 12px;
+        padding: 12px 15px 12px 15px;  
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 1.6em;
+        /*font-style: italic;*/
+        font-family: Georgia, 'Times New Roman', Times, Serif;  
+        color: #2C2E3E; 
+        border: 1px solid #DDC3A5;
+        /*background: #F0E5D3 url(../images/quote.gif) no-repeat 15px 15px;*/
+}
+
+strong { font-weight: bold; }
+
+/* start - table */
+table {
+        border-collapse: collapse;
+        margin: 20px 25px;              
+}
+tr { background: #F4EFEA; }
+tr.altrow { background: #F7F3E9;        }
+th, td {
+        text-align: left;                       
+        border-width: 1px;
+        border-style: solid;
+}
+th {
+        color: #273838;
+        background: #E8ECED;/*#9EBCBC;*/
+        padding: .8em 1em;      
+        border-color: #94B3B6 #8AACAF #689195 #8AACAF;  
+}
+td {
+        border-color: #E7DED3;  
+        padding: .7em 1em;      
+}       
+/* end - table */
+
+
+
+
+
+/* ------------------------------------------
+   LAYOUT
+------------------------------------------- */ 
+#wrap {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto; 
+        text-align: left;                       
+}
+/* header */
+#header {
+        display: flex;
+        background: #F6FAFE;
+        flex-direction: column;
+        height: 130px;  
+        margin: 0; padding: 0; 
+        border-bottom: 1px solid #23253F;
+}
+#header h1#logo-text { 
+        width: 100%;
+        margin: 5px 0 0 0; 
+        padding: 0;         
+        text-align: center;     
+        padding-bottom: 5px; 
+}
+
+
+/*  navigation  */
+#header #nav {
+        align-self: center;
+        margin: 0;      padding: 0;             
+        width: 900px;  
+}
+#header #nav ul {
+        list-style: none;       
+        text-align: center;     
+        height: 45px;
+        margin: 0; padding: 0;  
+}
+#header #nav ul li {
+        display: inline;
+        margin: 0; padding: 0;          
+}
+#header #nav ul li a {
+        margin: 0 8px;
+        padding: 5px 5px;
+        color: #23253f;
+        text-transform: uppercase;    
+        text-decoration: none;          
+}
+
+#header #nav ul li#current a,
+#header #nav ul li a:hover, 
+#header #nav ul li a:active {
+        border: none;
+        background: #23253f;    
+        color: #F6FAFE;    
+}
+
+/* contents */
+#content-outer {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width: 900px;
+        margin: 0; padding: 0;
+        background: #FFFFFF; 
+        box-sizing: border-box;          
+}
+#content-wrap {
+        align-self: center;
+        width: 900px;
+        padding: 0;                 
+}
+.content {
+        margin-left: 15px; 
+
+}
+
+.lefty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+.righty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+
+
+
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 18:22:42 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Sat, 23 Dec 2023 11:46:06 GMT
+ETag: "40-60d2be0cfa318"
+Accept-Ranges: bytes
+Content-Length: 64
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: application/javascript
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+document.write('<h1 id="logo-text">COMP170 - Spring 2024</h1>');HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 18:28:00 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Fri, 09 Feb 2024 10:48:19 GMT
+ETag: "102a-610f0aa8a0e1b"
+Accept-Ranges: bytes
+Content-Length: 4197
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/html; charset=UTF-8
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+        <title>COMP 170</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css"
+                media="screen"
+                href="tufts-comp.css" />
+
+        <script type='text/javascript'>
+
+        var old_shown = 0;
+        //
+        // show old news or hide old news
+        //
+        function toggle_old()
+        {
+                var news_block = document.getElementById('old_news');
+                var click_here = document.getElementById('old_news_toggle');
+
+                if ( old_shown == 0 )
+                {
+                        news_block["style"]["display"] = "block";
+                        click_here.innerHTML = "[hide old news]";
+                        old_shown = 1;
+                }
+                else
+                {
+                        news_block["style"]["display"] = "none";
+                        click_here.innerHTML = "[show old news]";
+                        old_shown = 0;
+                }
+        }
+
+        </script>
+<style>
+.sup {
+vertical-align: super;
+font-size: smaller;
+}
+</style>
+</head>
+<body>
+<div id="wrap"> <a id="top"></a>
+  <div id="header">
+    <script src="semester_header.js"></script>
+    <div  id="nav">
+
+      <ul>
+        <li id="current"><a class="navlinks" href=".">Home</a></li>
+        <li><a href="schedule/schedule.html">Schedule</a></li>
+        <li><a href="policy/policy.html">Policy</a></li>
+        <li><a href="resources/resources.html">Resources</a></li>
+
+      </ul>
+
+    </div>
+  </div>
+  <div id="content-outer" class="clear">
+    <div id="content-wrap" >
+      <div class="content">
+
+      <p>This course is intended as an introduction to the theory
+                of computation for senior level undergraduates and
+                graduate students looking for background material
+                in theory. The major topics within the course
+                include: models of computation, finite automata,
+                regular languages, context free grammars, turing machines,
+                undecidability, infeasibility, diagonalizations, nondeterminism,
+                information theory, time vs space, and complexity classes.</p>
+
+      <p><b>Prerequisites:</b> MATH/COMP 61 and COMP 15 are recommended, but any prior course with rigorous mathematical proofs should suffice</p>
+      
+      <p><b>Primary Textbook: </b><a target="_blank" href="https://www.amazon.com/Introduction-Theory-Computation-Sipser/dp/8131525295/ref=sr_1_1?crid=25SOINE160A9I&keywords=Introduction+to+the+Theory+of+Computation+by+Michael+Sipser&qid=1657724171&s=books&sprefix=introduction+to+the+theory+of+computation+by+michael+sipser%2Cstripbooks%2C67&sr=1-1"><i>Introduction to the Theory of Computation</i></a> by Michael Sipser
+      <br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/G%C3%B6dels-Proof-Ernest-Nagel/dp/0814758371"><i>G&ouml;del's Proof</i></a> by Ernest Nagel and James Newman<br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/Annotated-Turing-Through-Historic-Computability/dp/0470229055/ref=sr_1_1?keywords=the+annotated+turing&qid=1657724316&s=books&sprefix=the+annotataed+tu%2Cstripbooks%2C80&sr=1-1"><i>The Annotated Turing</i></a> by Charles Petzold<br>
+      </p>
+      
+     
+
+<p><b>Instructor:</b> Megan Monroe<br/>
+<b>Email:</b> <a href = "mailto:mmonroe@cs.tufts.edu"> mmonroe@cs.tufts.edu</a><br/>
+<b>Office:</b> Joyce Cummings Center, Room 440D <br/>
+<b>Office Hours:</b> Wednesday, 2:00-4:00pm
+</p>
+
+<p>
+        <b>Class Location:</b> Joyce Cummings Center, Room 270 <br/>
+        <b>Time:</b> (Tues/Thurs) 1:30 - 2:45am<br>
+        <b>Final Exam:</b> Tuesday, May 7th, 3:30-5:30pm
+</p>
+
+<p><b>Course Piazza:</b>
+        <a target="_blank" href="https://piazza.com/tufts/spring2024/cs170">CS170 Spring 2024</a>
+</p>
+
+<p><b>Teaching Fellows:</b>
+<br>Jasper Geer
+<br>Nate Nemeth
+</p>
+
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+<div id="chatbot"><script src="/chatbot.js"></script></div></body>
+</html>
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 18:28:00 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Wed, 13 Jul 2022 11:01:44 GMT
+ETag: "1295-5e3adb5ec0c83"
+Accept-Ranges: bytes
+Content-Length: 4757
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/css
+Keep-Alive: timeout=5, max=99
+Connection: Keep-Alive
+
+
+body {
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #23253f;    
+        background: #FFFFFF;         
+        border-bottom: 30px solid #FFFFFF; 
+        text-align: center;
+        margin: 0;
+}
+/* Links */
+a:link, a:visited { 
+        text-decoration: underline;
+        color: #23253f; 
+}
+a:hover {
+        text-decoration: underline;     
+}
+a.more-link {
+        padding-bottom: 2px;
+        font-weight: bold;      
+        border-bottom: 1px dotted #AE855C;      
+}
+a:hover.more-link {
+        text-decoration: none;
+}
+/* Headers */
+h1, h2, h3 {
+        color: #23253f;
+        margin: 10px 0px 5px 0px;      
+}
+h1 { font-size: 3.3em; font-weight: normal; letter-spacing: -2.0px; }
+h2 { font-size: 2.8em; font-weight: normal; color: #23253f; }
+h3 { font-size: 1.6em; font-weight: normal; letter-spacing: -1.0px; color: #23253f; border-bottom: 1px solid #23253f; padding-bottom: 5px; margin-top: 12px; } 
+
+h4 {
+    color: #23253f;
+    font-size: 1.3em; 
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 0px !important;
+    margin-block-end: .5em;
+}
+
+/* Lists */
+ul, ol {
+        margin: 12px 30px;
+        padding: 0 25px;
+}
+ul { list-style: square; }
+ol { list-style: decimal; }
+
+dt {
+  font-weight: bold;
+  color: #22312F;
+}
+dd {
+  padding-left: 20px; 
+}
+
+p, dl { padding: 12px 25px; }
+
+/* Images */
+img {
+    background: #FFFFFF;
+    border: none;
+    padding: 0;
+}
+
+
+code {
+        font: 500 1em/1.5em 'Lucida Console', 'Courier New', Monospace;
+        font-weight: bold;
+}
+
+blockquote {
+        margin: 12px 12px;
+        padding: 12px 15px 12px 15px;  
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 1.6em;
+        /*font-style: italic;*/
+        font-family: Georgia, 'Times New Roman', Times, Serif;  
+        color: #2C2E3E; 
+        border: 1px solid #DDC3A5;
+        /*background: #F0E5D3 url(../images/quote.gif) no-repeat 15px 15px;*/
+}
+
+strong { font-weight: bold; }
+
+/* start - table */
+table {
+        border-collapse: collapse;
+        margin: 20px 25px;              
+}
+tr { background: #F4EFEA; }
+tr.altrow { background: #F7F3E9;        }
+th, td {
+        text-align: left;                       
+        border-width: 1px;
+        border-style: solid;
+}
+th {
+        color: #273838;
+        background: #E8ECED;/*#9EBCBC;*/
+        padding: .8em 1em;      
+        border-color: #94B3B6 #8AACAF #689195 #8AACAF;  
+}
+td {
+        border-color: #E7DED3;  
+        padding: .7em 1em;      
+}       
+/* end - table */
+
+
+
+
+
+/* ------------------------------------------
+   LAYOUT
+------------------------------------------- */ 
+#wrap {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto; 
+        text-align: left;                       
+}
+/* header */
+#header {
+        display: flex;
+        background: #F6FAFE;
+        flex-direction: column;
+        height: 130px;  
+        margin: 0; padding: 0; 
+        border-bottom: 1px solid #23253F;
+}
+#header h1#logo-text { 
+        width: 100%;
+        margin: 5px 0 0 0; 
+        padding: 0;         
+        text-align: center;     
+        padding-bottom: 5px; 
+}
+
+
+/*  navigation  */
+#header #nav {
+        align-self: center;
+        margin: 0;      padding: 0;             
+        width: 900px;  
+}
+#header #nav ul {
+        list-style: none;       
+        text-align: center;     
+        height: 45px;
+        margin: 0; padding: 0;  
+}
+#header #nav ul li {
+        display: inline;
+        margin: 0; padding: 0;          
+}
+#header #nav ul li a {
+        margin: 0 8px;
+        padding: 5px 5px;
+        color: #23253f;
+        text-transform: uppercase;    
+        text-decoration: none;          
+}
+
+#header #nav ul li#current a,
+#header #nav ul li a:hover, 
+#header #nav ul li a:active {
+        border: none;
+        background: #23253f;    
+        color: #F6FAFE;    
+}
+
+/* contents */
+#content-outer {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width: 900px;
+        margin: 0; padding: 0;
+        background: #FFFFFF; 
+        box-sizing: border-box;          
+}
+#content-wrap {
+        align-self: center;
+        width: 900px;
+        padding: 0;                 
+}
+.content {
+        margin-left: 15px; 
+
+}
+
+.lefty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+.righty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+
+
+
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 18:28:01 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Sat, 23 Dec 2023 11:46:06 GMT
+ETag: "40-60d2be0cfa318"
+Accept-Ranges: bytes
+Content-Length: 64
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: application/javascript
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+document.write('<h1 id="logo-text">COMP170 - Spring 2024</h1>');HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 18:50:12 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Fri, 09 Feb 2024 10:48:19 GMT
+ETag: "102a-610f0aa8a0e1b"
+Accept-Ranges: bytes
+Content-Length: 4197
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/html; charset=UTF-8
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+        <title>COMP 170</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css"
+                media="screen"
+                href="tufts-comp.css" />
+
+        <script type='text/javascript'>
+
+        var old_shown = 0;
+        //
+        // show old news or hide old news
+        //
+        function toggle_old()
+        {
+                var news_block = document.getElementById('old_news');
+                var click_here = document.getElementById('old_news_toggle');
+
+                if ( old_shown == 0 )
+                {
+                        news_block["style"]["display"] = "block";
+                        click_here.innerHTML = "[hide old news]";
+                        old_shown = 1;
+                }
+                else
+                {
+                        news_block["style"]["display"] = "none";
+                        click_here.innerHTML = "[show old news]";
+                        old_shown = 0;
+                }
+        }
+
+        </script>
+<style>
+.sup {
+vertical-align: super;
+font-size: smaller;
+}
+</style>
+</head>
+<body>
+<div id="wrap"> <a id="top"></a>
+  <div id="header">
+    <script src="semester_header.js"></script>
+    <div  id="nav">
+
+      <ul>
+        <li id="current"><a class="navlinks" href=".">Home</a></li>
+        <li><a href="schedule/schedule.html">Schedule</a></li>
+        <li><a href="policy/policy.html">Policy</a></li>
+        <li><a href="resources/resources.html">Resources</a></li>
+
+      </ul>
+
+    </div>
+  </div>
+  <div id="content-outer" class="clear">
+    <div id="content-wrap" >
+      <div class="content">
+
+      <p>This course is intended as an introduction to the theory
+                of computation for senior level undergraduates and
+                graduate students looking for background material
+                in theory. The major topics within the course
+                include: models of computation, finite automata,
+                regular languages, context free grammars, turing machines,
+                undecidability, infeasibility, diagonalizations, nondeterminism,
+                information theory, time vs space, and complexity classes.</p>
+
+      <p><b>Prerequisites:</b> MATH/COMP 61 and COMP 15 are recommended, but any prior course with rigorous mathematical proofs should suffice</p>
+      
+      <p><b>Primary Textbook: </b><a target="_blank" href="https://www.amazon.com/Introduction-Theory-Computation-Sipser/dp/8131525295/ref=sr_1_1?crid=25SOINE160A9I&keywords=Introduction+to+the+Theory+of+Computation+by+Michael+Sipser&qid=1657724171&s=books&sprefix=introduction+to+the+theory+of+computation+by+michael+sipser%2Cstripbooks%2C67&sr=1-1"><i>Introduction to the Theory of Computation</i></a> by Michael Sipser
+      <br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/G%C3%B6dels-Proof-Ernest-Nagel/dp/0814758371"><i>G&ouml;del's Proof</i></a> by Ernest Nagel and James Newman<br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/Annotated-Turing-Through-Historic-Computability/dp/0470229055/ref=sr_1_1?keywords=the+annotated+turing&qid=1657724316&s=books&sprefix=the+annotataed+tu%2Cstripbooks%2C80&sr=1-1"><i>The Annotated Turing</i></a> by Charles Petzold<br>
+      </p>
+      
+     
+
+<p><b>Instructor:</b> Megan Monroe<br/>
+<b>Email:</b> <a href = "mailto:mmonroe@cs.tufts.edu"> mmonroe@cs.tufts.edu</a><br/>
+<b>Office:</b> Joyce Cummings Center, Room 440D <br/>
+<b>Office Hours:</b> Wednesday, 2:00-4:00pm
+</p>
+
+<p>
+        <b>Class Location:</b> Joyce Cummings Center, Room 270 <br/>
+        <b>Time:</b> (Tues/Thurs) 1:30 - 2:45am<br>
+        <b>Final Exam:</b> Tuesday, May 7th, 3:30-5:30pm
+</p>
+
+<p><b>Course Piazza:</b>
+        <a target="_blank" href="https://piazza.com/tufts/spring2024/cs170">CS170 Spring 2024</a>
+</p>
+
+<p><b>Teaching Fellows:</b>
+<br>Jasper Geer
+<br>Nate Nemeth
+</p>
+
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+<div id="chatbot"><script src="/chatbot.js"></script></div></body>
+</html>
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 18:50:12 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Wed, 13 Jul 2022 11:01:44 GMT
+ETag: "1295-5e3adb5ec0c83"
+Accept-Ranges: bytes
+Content-Length: 4757
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/css
+Keep-Alive: timeout=5, max=99
+Connection: Keep-Alive
+
+
+body {
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #23253f;    
+        background: #FFFFFF;         
+        border-bottom: 30px solid #FFFFFF; 
+        text-align: center;
+        margin: 0;
+}
+/* Links */
+a:link, a:visited { 
+        text-decoration: underline;
+        color: #23253f; 
+}
+a:hover {
+        text-decoration: underline;     
+}
+a.more-link {
+        padding-bottom: 2px;
+        font-weight: bold;      
+        border-bottom: 1px dotted #AE855C;      
+}
+a:hover.more-link {
+        text-decoration: none;
+}
+/* Headers */
+h1, h2, h3 {
+        color: #23253f;
+        margin: 10px 0px 5px 0px;      
+}
+h1 { font-size: 3.3em; font-weight: normal; letter-spacing: -2.0px; }
+h2 { font-size: 2.8em; font-weight: normal; color: #23253f; }
+h3 { font-size: 1.6em; font-weight: normal; letter-spacing: -1.0px; color: #23253f; border-bottom: 1px solid #23253f; padding-bottom: 5px; margin-top: 12px; } 
+
+h4 {
+    color: #23253f;
+    font-size: 1.3em; 
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 0px !important;
+    margin-block-end: .5em;
+}
+
+/* Lists */
+ul, ol {
+        margin: 12px 30px;
+        padding: 0 25px;
+}
+ul { list-style: square; }
+ol { list-style: decimal; }
+
+dt {
+  font-weight: bold;
+  color: #22312F;
+}
+dd {
+  padding-left: 20px; 
+}
+
+p, dl { padding: 12px 25px; }
+
+/* Images */
+img {
+    background: #FFFFFF;
+    border: none;
+    padding: 0;
+}
+
+
+code {
+        font: 500 1em/1.5em 'Lucida Console', 'Courier New', Monospace;
+        font-weight: bold;
+}
+
+blockquote {
+        margin: 12px 12px;
+        padding: 12px 15px 12px 15px;  
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 1.6em;
+        /*font-style: italic;*/
+        font-family: Georgia, 'Times New Roman', Times, Serif;  
+        color: #2C2E3E; 
+        border: 1px solid #DDC3A5;
+        /*background: #F0E5D3 url(../images/quote.gif) no-repeat 15px 15px;*/
+}
+
+strong { font-weight: bold; }
+
+/* start - table */
+table {
+        border-collapse: collapse;
+        margin: 20px 25px;              
+}
+tr { background: #F4EFEA; }
+tr.altrow { background: #F7F3E9;        }
+th, td {
+        text-align: left;                       
+        border-width: 1px;
+        border-style: solid;
+}
+th {
+        color: #273838;
+        background: #E8ECED;/*#9EBCBC;*/
+        padding: .8em 1em;      
+        border-color: #94B3B6 #8AACAF #689195 #8AACAF;  
+}
+td {
+        border-color: #E7DED3;  
+        padding: .7em 1em;      
+}       
+/* end - table */
+
+
+
+
+
+/* ------------------------------------------
+   LAYOUT
+------------------------------------------- */ 
+#wrap {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto; 
+        text-align: left;                       
+}
+/* header */
+#header {
+        display: flex;
+        background: #F6FAFE;
+        flex-direction: column;
+        height: 130px;  
+        margin: 0; padding: 0; 
+        border-bottom: 1px solid #23253F;
+}
+#header h1#logo-text { 
+        width: 100%;
+        margin: 5px 0 0 0; 
+        padding: 0;         
+        text-align: center;     
+        padding-bottom: 5px; 
+}
+
+
+/*  navigation  */
+#header #nav {
+        align-self: center;
+        margin: 0;      padding: 0;             
+        width: 900px;  
+}
+#header #nav ul {
+        list-style: none;       
+        text-align: center;     
+        height: 45px;
+        margin: 0; padding: 0;  
+}
+#header #nav ul li {
+        display: inline;
+        margin: 0; padding: 0;          
+}
+#header #nav ul li a {
+        margin: 0 8px;
+        padding: 5px 5px;
+        color: #23253f;
+        text-transform: uppercase;    
+        text-decoration: none;          
+}
+
+#header #nav ul li#current a,
+#header #nav ul li a:hover, 
+#header #nav ul li a:active {
+        border: none;
+        background: #23253f;    
+        color: #F6FAFE;    
+}
+
+/* contents */
+#content-outer {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width: 900px;
+        margin: 0; padding: 0;
+        background: #FFFFFF; 
+        box-sizing: border-box;          
+}
+#content-wrap {
+        align-self: center;
+        width: 900px;
+        padding: 0;                 
+}
+.content {
+        margin-left: 15px; 
+
+}
+
+.lefty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+.righty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+
+
+
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 18:50:12 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Sat, 23 Dec 2023 11:46:06 GMT
+ETag: "40-60d2be0cfa318"
+Accept-Ranges: bytes
+Content-Length: 64
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: application/javascript
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+document.write('<h1 id="logo-text">COMP170 - Spring 2024</h1>');HTTP/1.1 304 Not Modified
+Date: Sat, 14 Dec 2024 21:46:30 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Connection: Keep-Alive
+Keep-Alive: timeout=5, max=100
+ETag: "dc3-620d8c0f1356c"
+
+HTTP/1.1 304 Not Modified
+Date: Sat, 14 Dec 2024 21:48:31 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Connection: Keep-Alive
+Keep-Alive: timeout=5, max=100
+ETag: "dc3-620d8c0f1356c"
+
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 21:49:54 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Fri, 09 Feb 2024 10:48:19 GMT
+ETag: "102a-610f0aa8a0e1b"
+Accept-Ranges: bytes
+Content-Length: 4197
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/html; charset=UTF-8
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+        <title>COMP 170</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css"
+                media="screen"
+                href="tufts-comp.css" />
+
+        <script type='text/javascript'>
+
+        var old_shown = 0;
+        //
+        // show old news or hide old news
+        //
+        function toggle_old()
+        {
+                var news_block = document.getElementById('old_news');
+                var click_here = document.getElementById('old_news_toggle');
+
+                if ( old_shown == 0 )
+                {
+                        news_block["style"]["display"] = "block";
+                        click_here.innerHTML = "[hide old news]";
+                        old_shown = 1;
+                }
+                else
+                {
+                        news_block["style"]["display"] = "none";
+                        click_here.innerHTML = "[show old news]";
+                        old_shown = 0;
+                }
+        }
+
+        </script>
+<style>
+.sup {
+vertical-align: super;
+font-size: smaller;
+}
+</style>
+</head>
+<body>
+<div id="wrap"> <a id="top"></a>
+  <div id="header">
+    <script src="semester_header.js"></script>
+    <div  id="nav">
+
+      <ul>
+        <li id="current"><a class="navlinks" href=".">Home</a></li>
+        <li><a href="schedule/schedule.html">Schedule</a></li>
+        <li><a href="policy/policy.html">Policy</a></li>
+        <li><a href="resources/resources.html">Resources</a></li>
+
+      </ul>
+
+    </div>
+  </div>
+  <div id="content-outer" class="clear">
+    <div id="content-wrap" >
+      <div class="content">
+
+      <p>This course is intended as an introduction to the theory
+                of computation for senior level undergraduates and
+                graduate students looking for background material
+                in theory. The major topics within the course
+                include: models of computation, finite automata,
+                regular languages, context free grammars, turing machines,
+                undecidability, infeasibility, diagonalizations, nondeterminism,
+                information theory, time vs space, and complexity classes.</p>
+
+      <p><b>Prerequisites:</b> MATH/COMP 61 and COMP 15 are recommended, but any prior course with rigorous mathematical proofs should suffice</p>
+      
+      <p><b>Primary Textbook: </b><a target="_blank" href="https://www.amazon.com/Introduction-Theory-Computation-Sipser/dp/8131525295/ref=sr_1_1?crid=25SOINE160A9I&keywords=Introduction+to+the+Theory+of+Computation+by+Michael+Sipser&qid=1657724171&s=books&sprefix=introduction+to+the+theory+of+computation+by+michael+sipser%2Cstripbooks%2C67&sr=1-1"><i>Introduction to the Theory of Computation</i></a> by Michael Sipser
+      <br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/G%C3%B6dels-Proof-Ernest-Nagel/dp/0814758371"><i>G&ouml;del's Proof</i></a> by Ernest Nagel and James Newman<br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/Annotated-Turing-Through-Historic-Computability/dp/0470229055/ref=sr_1_1?keywords=the+annotated+turing&qid=1657724316&s=books&sprefix=the+annotataed+tu%2Cstripbooks%2C80&sr=1-1"><i>The Annotated Turing</i></a> by Charles Petzold<br>
+      </p>
+      
+     
+
+<p><b>Instructor:</b> Megan Monroe<br/>
+<b>Email:</b> <a href = "mailto:mmonroe@cs.tufts.edu"> mmonroe@cs.tufts.edu</a><br/>
+<b>Office:</b> Joyce Cummings Center, Room 440D <br/>
+<b>Office Hours:</b> Wednesday, 2:00-4:00pm
+</p>
+
+<p>
+        <b>Class Location:</b> Joyce Cummings Center, Room 270 <br/>
+        <b>Time:</b> (Tues/Thurs) 1:30 - 2:45am<br>
+        <b>Final Exam:</b> Tuesday, May 7th, 3:30-5:30pm
+</p>
+
+<p><b>Course Piazza:</b>
+        <a target="_blank" href="https://piazza.com/tufts/spring2024/cs170">CS170 Spring 2024</a>
+</p>
+
+<p><b>Teaching Fellows:</b>
+<br>Jasper Geer
+<br>Nate Nemeth
+</p>
+
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+<div id="chatbot"><script src="/chatbot.js"></script></div></body>
+</html>
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 21:49:54 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Wed, 13 Jul 2022 11:01:44 GMT
+ETag: "1295-5e3adb5ec0c83"
+Accept-Ranges: bytes
+Content-Length: 4757
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/css
+Keep-Alive: timeout=5, max=99
+Connection: Keep-Alive
+
+
+body {
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #23253f;    
+        background: #FFFFFF;         
+        border-bottom: 30px solid #FFFFFF; 
+        text-align: center;
+        margin: 0;
+}
+/* Links */
+a:link, a:visited { 
+        text-decoration: underline;
+        color: #23253f; 
+}
+a:hover {
+        text-decoration: underline;     
+}
+a.more-link {
+        padding-bottom: 2px;
+        font-weight: bold;      
+        border-bottom: 1px dotted #AE855C;      
+}
+a:hover.more-link {
+        text-decoration: none;
+}
+/* Headers */
+h1, h2, h3 {
+        color: #23253f;
+        margin: 10px 0px 5px 0px;      
+}
+h1 { font-size: 3.3em; font-weight: normal; letter-spacing: -2.0px; }
+h2 { font-size: 2.8em; font-weight: normal; color: #23253f; }
+h3 { font-size: 1.6em; font-weight: normal; letter-spacing: -1.0px; color: #23253f; border-bottom: 1px solid #23253f; padding-bottom: 5px; margin-top: 12px; } 
+
+h4 {
+    color: #23253f;
+    font-size: 1.3em; 
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 0px !important;
+    margin-block-end: .5em;
+}
+
+/* Lists */
+ul, ol {
+        margin: 12px 30px;
+        padding: 0 25px;
+}
+ul { list-style: square; }
+ol { list-style: decimal; }
+
+dt {
+  font-weight: bold;
+  color: #22312F;
+}
+dd {
+  padding-left: 20px; 
+}
+
+p, dl { padding: 12px 25px; }
+
+/* Images */
+img {
+    background: #FFFFFF;
+    border: none;
+    padding: 0;
+}
+
+
+code {
+        font: 500 1em/1.5em 'Lucida Console', 'Courier New', Monospace;
+        font-weight: bold;
+}
+
+blockquote {
+        margin: 12px 12px;
+        padding: 12px 15px 12px 15px;  
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 1.6em;
+        /*font-style: italic;*/
+        font-family: Georgia, 'Times New Roman', Times, Serif;  
+        color: #2C2E3E; 
+        border: 1px solid #DDC3A5;
+        /*background: #F0E5D3 url(../images/quote.gif) no-repeat 15px 15px;*/
+}
+
+strong { font-weight: bold; }
+
+/* start - table */
+table {
+        border-collapse: collapse;
+        margin: 20px 25px;              
+}
+tr { background: #F4EFEA; }
+tr.altrow { background: #F7F3E9;        }
+th, td {
+        text-align: left;                       
+        border-width: 1px;
+        border-style: solid;
+}
+th {
+        color: #273838;
+        background: #E8ECED;/*#9EBCBC;*/
+        padding: .8em 1em;      
+        border-color: #94B3B6 #8AACAF #689195 #8AACAF;  
+}
+td {
+        border-color: #E7DED3;  
+        padding: .7em 1em;      
+}       
+/* end - table */
+
+
+
+
+
+/* ------------------------------------------
+   LAYOUT
+------------------------------------------- */ 
+#wrap {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto; 
+        text-align: left;                       
+}
+/* header */
+#header {
+        display: flex;
+        background: #F6FAFE;
+        flex-direction: column;
+        height: 130px;  
+        margin: 0; padding: 0; 
+        border-bottom: 1px solid #23253F;
+}
+#header h1#logo-text { 
+        width: 100%;
+        margin: 5px 0 0 0; 
+        padding: 0;         
+        text-align: center;     
+        padding-bottom: 5px; 
+}
+
+
+/*  navigation  */
+#header #nav {
+        align-self: center;
+        margin: 0;      padding: 0;             
+        width: 900px;  
+}
+#header #nav ul {
+        list-style: none;       
+        text-align: center;     
+        height: 45px;
+        margin: 0; padding: 0;  
+}
+#header #nav ul li {
+        display: inline;
+        margin: 0; padding: 0;          
+}
+#header #nav ul li a {
+        margin: 0 8px;
+        padding: 5px 5px;
+        color: #23253f;
+        text-transform: uppercase;    
+        text-decoration: none;          
+}
+
+#header #nav ul li#current a,
+#header #nav ul li a:hover, 
+#header #nav ul li a:active {
+        border: none;
+        background: #23253f;    
+        color: #F6FAFE;    
+}
+
+/* contents */
+#content-outer {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width: 900px;
+        margin: 0; padding: 0;
+        background: #FFFFFF; 
+        box-sizing: border-box;          
+}
+#content-wrap {
+        align-self: center;
+        width: 900px;
+        padding: 0;                 
+}
+.content {
+        margin-left: 15px; 
+
+}
+
+.lefty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+.righty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+
+
+
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 21:50:09 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Fri, 09 Feb 2024 10:48:19 GMT
+ETag: "102a-610f0aa8a0e1b"
+Accept-Ranges: bytes
+Content-Length: 4197
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/html; charset=UTF-8
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+        <title>COMP 170</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css"
+                media="screen"
+                href="tufts-comp.css" />
+
+        <script type='text/javascript'>
+
+        var old_shown = 0;
+        //
+        // show old news or hide old news
+        //
+        function toggle_old()
+        {
+                var news_block = document.getElementById('old_news');
+                var click_here = document.getElementById('old_news_toggle');
+
+                if ( old_shown == 0 )
+                {
+                        news_block["style"]["display"] = "block";
+                        click_here.innerHTML = "[hide old news]";
+                        old_shown = 1;
+                }
+                else
+                {
+                        news_block["style"]["display"] = "none";
+                        click_here.innerHTML = "[show old news]";
+                        old_shown = 0;
+                }
+        }
+
+        </script>
+<style>
+.sup {
+vertical-align: super;
+font-size: smaller;
+}
+</style>
+</head>
+<body>
+<div id="wrap"> <a id="top"></a>
+  <div id="header">
+    <script src="semester_header.js"></script>
+    <div  id="nav">
+
+      <ul>
+        <li id="current"><a class="navlinks" href=".">Home</a></li>
+        <li><a href="schedule/schedule.html">Schedule</a></li>
+        <li><a href="policy/policy.html">Policy</a></li>
+        <li><a href="resources/resources.html">Resources</a></li>
+
+      </ul>
+
+    </div>
+  </div>
+  <div id="content-outer" class="clear">
+    <div id="content-wrap" >
+      <div class="content">
+
+      <p>This course is intended as an introduction to the theory
+                of computation for senior level undergraduates and
+                graduate students looking for background material
+                in theory. The major topics within the course
+                include: models of computation, finite automata,
+                regular languages, context free grammars, turing machines,
+                undecidability, infeasibility, diagonalizations, nondeterminism,
+                information theory, time vs space, and complexity classes.</p>
+
+      <p><b>Prerequisites:</b> MATH/COMP 61 and COMP 15 are recommended, but any prior course with rigorous mathematical proofs should suffice</p>
+      
+      <p><b>Primary Textbook: </b><a target="_blank" href="https://www.amazon.com/Introduction-Theory-Computation-Sipser/dp/8131525295/ref=sr_1_1?crid=25SOINE160A9I&keywords=Introduction+to+the+Theory+of+Computation+by+Michael+Sipser&qid=1657724171&s=books&sprefix=introduction+to+the+theory+of+computation+by+michael+sipser%2Cstripbooks%2C67&sr=1-1"><i>Introduction to the Theory of Computation</i></a> by Michael Sipser
+      <br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/G%C3%B6dels-Proof-Ernest-Nagel/dp/0814758371"><i>G&ouml;del's Proof</i></a> by Ernest Nagel and James Newman<br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/Annotated-Turing-Through-Historic-Computability/dp/0470229055/ref=sr_1_1?keywords=the+annotated+turing&qid=1657724316&s=books&sprefix=the+annotataed+tu%2Cstripbooks%2C80&sr=1-1"><i>The Annotated Turing</i></a> by Charles Petzold<br>
+      </p>
+      
+     
+
+<p><b>Instructor:</b> Megan Monroe<br/>
+<b>Email:</b> <a href = "mailto:mmonroe@cs.tufts.edu"> mmonroe@cs.tufts.edu</a><br/>
+<b>Office:</b> Joyce Cummings Center, Room 440D <br/>
+<b>Office Hours:</b> Wednesday, 2:00-4:00pm
+</p>
+
+<p>
+        <b>Class Location:</b> Joyce Cummings Center, Room 270 <br/>
+        <b>Time:</b> (Tues/Thurs) 1:30 - 2:45am<br>
+        <b>Final Exam:</b> Tuesday, May 7th, 3:30-5:30pm
+</p>
+
+<p><b>Course Piazza:</b>
+        <a target="_blank" href="https://piazza.com/tufts/spring2024/cs170">CS170 Spring 2024</a>
+</p>
+
+<p><b>Teaching Fellows:</b>
+<br>Jasper Geer
+<br>Nate Nemeth
+</p>
+
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+<div id="chatbot"><script src="/chatbot.js"></script></div></body>
+</html>
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 21:50:09 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Wed, 13 Jul 2022 11:01:44 GMT
+ETag: "1295-5e3adb5ec0c83"
+Accept-Ranges: bytes
+Content-Length: 4757
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/css
+Keep-Alive: timeout=5, max=99
+Connection: Keep-Alive
+
+
+body {
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #23253f;    
+        background: #FFFFFF;         
+        border-bottom: 30px solid #FFFFFF; 
+        text-align: center;
+        margin: 0;
+}
+/* Links */
+a:link, a:visited { 
+        text-decoration: underline;
+        color: #23253f; 
+}
+a:hover {
+        text-decoration: underline;     
+}
+a.more-link {
+        padding-bottom: 2px;
+        font-weight: bold;      
+        border-bottom: 1px dotted #AE855C;      
+}
+a:hover.more-link {
+        text-decoration: none;
+}
+/* Headers */
+h1, h2, h3 {
+        color: #23253f;
+        margin: 10px 0px 5px 0px;      
+}
+h1 { font-size: 3.3em; font-weight: normal; letter-spacing: -2.0px; }
+h2 { font-size: 2.8em; font-weight: normal; color: #23253f; }
+h3 { font-size: 1.6em; font-weight: normal; letter-spacing: -1.0px; color: #23253f; border-bottom: 1px solid #23253f; padding-bottom: 5px; margin-top: 12px; } 
+
+h4 {
+    color: #23253f;
+    font-size: 1.3em; 
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 0px !important;
+    margin-block-end: .5em;
+}
+
+/* Lists */
+ul, ol {
+        margin: 12px 30px;
+        padding: 0 25px;
+}
+ul { list-style: square; }
+ol { list-style: decimal; }
+
+dt {
+  font-weight: bold;
+  color: #22312F;
+}
+dd {
+  padding-left: 20px; 
+}
+
+p, dl { padding: 12px 25px; }
+
+/* Images */
+img {
+    background: #FFFFFF;
+    border: none;
+    padding: 0;
+}
+
+
+code {
+        font: 500 1em/1.5em 'Lucida Console', 'Courier New', Monospace;
+        font-weight: bold;
+}
+
+blockquote {
+        margin: 12px 12px;
+        padding: 12px 15px 12px 15px;  
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 1.6em;
+        /*font-style: italic;*/
+        font-family: Georgia, 'Times New Roman', Times, Serif;  
+        color: #2C2E3E; 
+        border: 1px solid #DDC3A5;
+        /*background: #F0E5D3 url(../images/quote.gif) no-repeat 15px 15px;*/
+}
+
+strong { font-weight: bold; }
+
+/* start - table */
+table {
+        border-collapse: collapse;
+        margin: 20px 25px;              
+}
+tr { background: #F4EFEA; }
+tr.altrow { background: #F7F3E9;        }
+th, td {
+        text-align: left;                       
+        border-width: 1px;
+        border-style: solid;
+}
+th {
+        color: #273838;
+        background: #E8ECED;/*#9EBCBC;*/
+        padding: .8em 1em;      
+        border-color: #94B3B6 #8AACAF #689195 #8AACAF;  
+}
+td {
+        border-color: #E7DED3;  
+        padding: .7em 1em;      
+}       
+/* end - table */
+
+
+
+
+
+/* ------------------------------------------
+   LAYOUT
+------------------------------------------- */ 
+#wrap {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto; 
+        text-align: left;                       
+}
+/* header */
+#header {
+        display: flex;
+        background: #F6FAFE;
+        flex-direction: column;
+        height: 130px;  
+        margin: 0; padding: 0; 
+        border-bottom: 1px solid #23253F;
+}
+#header h1#logo-text { 
+        width: 100%;
+        margin: 5px 0 0 0; 
+        padding: 0;         
+        text-align: center;     
+        padding-bottom: 5px; 
+}
+
+
+/*  navigation  */
+#header #nav {
+        align-self: center;
+        margin: 0;      padding: 0;             
+        width: 900px;  
+}
+#header #nav ul {
+        list-style: none;       
+        text-align: center;     
+        height: 45px;
+        margin: 0; padding: 0;  
+}
+#header #nav ul li {
+        display: inline;
+        margin: 0; padding: 0;          
+}
+#header #nav ul li a {
+        margin: 0 8px;
+        padding: 5px 5px;
+        color: #23253f;
+        text-transform: uppercase;    
+        text-decoration: none;          
+}
+
+#header #nav ul li#current a,
+#header #nav ul li a:hover, 
+#header #nav ul li a:active {
+        border: none;
+        background: #23253f;    
+        color: #F6FAFE;    
+}
+
+/* contents */
+#content-outer {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width: 900px;
+        margin: 0; padding: 0;
+        background: #FFFFFF; 
+        box-sizing: border-box;          
+}
+#content-wrap {
+        align-self: center;
+        width: 900px;
+        padding: 0;                 
+}
+.content {
+        margin-left: 15px; 
+
+}
+
+.lefty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+.righty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+
+
+
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 21:50:10 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Sat, 23 Dec 2023 11:46:06 GMT
+ETag: "40-60d2be0cfa318"
+Accept-Ranges: bytes
+Content-Length: 64
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: application/javascript
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+document.write('<h1 id="logo-text">COMP170 - Spring 2024</h1>');HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 21:59:06 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Fri, 09 Feb 2024 10:48:19 GMT
+ETag: "102a-610f0aa8a0e1b"
+Accept-Ranges: bytes
+Content-Length: 4197
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/html; charset=UTF-8
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+        <title>COMP 170</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css"
+                media="screen"
+                href="tufts-comp.css" />
+
+        <script type='text/javascript'>
+
+        var old_shown = 0;
+        //
+        // show old news or hide old news
+        //
+        function toggle_old()
+        {
+                var news_block = document.getElementById('old_news');
+                var click_here = document.getElementById('old_news_toggle');
+
+                if ( old_shown == 0 )
+                {
+                        news_block["style"]["display"] = "block";
+                        click_here.innerHTML = "[hide old news]";
+                        old_shown = 1;
+                }
+                else
+                {
+                        news_block["style"]["display"] = "none";
+                        click_here.innerHTML = "[show old news]";
+                        old_shown = 0;
+                }
+        }
+
+        </script>
+<style>
+.sup {
+vertical-align: super;
+font-size: smaller;
+}
+</style>
+</head>
+<body>
+<div id="wrap"> <a id="top"></a>
+  <div id="header">
+    <script src="semester_header.js"></script>
+    <div  id="nav">
+
+      <ul>
+        <li id="current"><a class="navlinks" href=".">Home</a></li>
+        <li><a href="schedule/schedule.html">Schedule</a></li>
+        <li><a href="policy/policy.html">Policy</a></li>
+        <li><a href="resources/resources.html">Resources</a></li>
+
+      </ul>
+
+    </div>
+  </div>
+  <div id="content-outer" class="clear">
+    <div id="content-wrap" >
+      <div class="content">
+
+      <p>This course is intended as an introduction to the theory
+                of computation for senior level undergraduates and
+                graduate students looking for background material
+                in theory. The major topics within the course
+                include: models of computation, finite automata,
+                regular languages, context free grammars, turing machines,
+                undecidability, infeasibility, diagonalizations, nondeterminism,
+                information theory, time vs space, and complexity classes.</p>
+
+      <p><b>Prerequisites:</b> MATH/COMP 61 and COMP 15 are recommended, but any prior course with rigorous mathematical proofs should suffice</p>
+      
+      <p><b>Primary Textbook: </b><a target="_blank" href="https://www.amazon.com/Introduction-Theory-Computation-Sipser/dp/8131525295/ref=sr_1_1?crid=25SOINE160A9I&keywords=Introduction+to+the+Theory+of+Computation+by+Michael+Sipser&qid=1657724171&s=books&sprefix=introduction+to+the+theory+of+computation+by+michael+sipser%2Cstripbooks%2C67&sr=1-1"><i>Introduction to the Theory of Computation</i></a> by Michael Sipser
+      <br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/G%C3%B6dels-Proof-Ernest-Nagel/dp/0814758371"><i>G&ouml;del's Proof</i></a> by Ernest Nagel and James Newman<br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/Annotated-Turing-Through-Historic-Computability/dp/0470229055/ref=sr_1_1?keywords=the+annotated+turing&qid=1657724316&s=books&sprefix=the+annotataed+tu%2Cstripbooks%2C80&sr=1-1"><i>The Annotated Turing</i></a> by Charles Petzold<br>
+      </p>
+      
+     
+
+<p><b>Instructor:</b> Megan Monroe<br/>
+<b>Email:</b> <a href = "mailto:mmonroe@cs.tufts.edu"> mmonroe@cs.tufts.edu</a><br/>
+<b>Office:</b> Joyce Cummings Center, Room 440D <br/>
+<b>Office Hours:</b> Wednesday, 2:00-4:00pm
+</p>
+
+<p>
+        <b>Class Location:</b> Joyce Cummings Center, Room 270 <br/>
+        <b>Time:</b> (Tues/Thurs) 1:30 - 2:45am<br>
+        <b>Final Exam:</b> Tuesday, May 7th, 3:30-5:30pm
+</p>
+
+<p><b>Course Piazza:</b>
+        <a target="_blank" href="https://piazza.com/tufts/spring2024/cs170">CS170 Spring 2024</a>
+</p>
+
+<p><b>Teaching Fellows:</b>
+<br>Jasper Geer
+<br>Nate Nemeth
+</p>
+
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+<div id="chatbot"><script src="/chatbot.js"></script></div></body>
+</html>
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 21:59:06 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Wed, 13 Jul 2022 11:01:44 GMT
+ETag: "1295-5e3adb5ec0c83"
+Accept-Ranges: bytes
+Content-Length: 4757
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/css
+Keep-Alive: timeout=5, max=99
+Connection: Keep-Alive
+
+
+body {
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #23253f;    
+        background: #FFFFFF;         
+        border-bottom: 30px solid #FFFFFF; 
+        text-align: center;
+        margin: 0;
+}
+/* Links */
+a:link, a:visited { 
+        text-decoration: underline;
+        color: #23253f; 
+}
+a:hover {
+        text-decoration: underline;     
+}
+a.more-link {
+        padding-bottom: 2px;
+        font-weight: bold;      
+        border-bottom: 1px dotted #AE855C;      
+}
+a:hover.more-link {
+        text-decoration: none;
+}
+/* Headers */
+h1, h2, h3 {
+        color: #23253f;
+        margin: 10px 0px 5px 0px;      
+}
+h1 { font-size: 3.3em; font-weight: normal; letter-spacing: -2.0px; }
+h2 { font-size: 2.8em; font-weight: normal; color: #23253f; }
+h3 { font-size: 1.6em; font-weight: normal; letter-spacing: -1.0px; color: #23253f; border-bottom: 1px solid #23253f; padding-bottom: 5px; margin-top: 12px; } 
+
+h4 {
+    color: #23253f;
+    font-size: 1.3em; 
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 0px !important;
+    margin-block-end: .5em;
+}
+
+/* Lists */
+ul, ol {
+        margin: 12px 30px;
+        padding: 0 25px;
+}
+ul { list-style: square; }
+ol { list-style: decimal; }
+
+dt {
+  font-weight: bold;
+  color: #22312F;
+}
+dd {
+  padding-left: 20px; 
+}
+
+p, dl { padding: 12px 25px; }
+
+/* Images */
+img {
+    background: #FFFFFF;
+    border: none;
+    padding: 0;
+}
+
+
+code {
+        font: 500 1em/1.5em 'Lucida Console', 'Courier New', Monospace;
+        font-weight: bold;
+}
+
+blockquote {
+        margin: 12px 12px;
+        padding: 12px 15px 12px 15px;  
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 1.6em;
+        /*font-style: italic;*/
+        font-family: Georgia, 'Times New Roman', Times, Serif;  
+        color: #2C2E3E; 
+        border: 1px solid #DDC3A5;
+        /*background: #F0E5D3 url(../images/quote.gif) no-repeat 15px 15px;*/
+}
+
+strong { font-weight: bold; }
+
+/* start - table */
+table {
+        border-collapse: collapse;
+        margin: 20px 25px;              
+}
+tr { background: #F4EFEA; }
+tr.altrow { background: #F7F3E9;        }
+th, td {
+        text-align: left;                       
+        border-width: 1px;
+        border-style: solid;
+}
+th {
+        color: #273838;
+        background: #E8ECED;/*#9EBCBC;*/
+        padding: .8em 1em;      
+        border-color: #94B3B6 #8AACAF #689195 #8AACAF;  
+}
+td {
+        border-color: #E7DED3;  
+        padding: .7em 1em;      
+}       
+/* end - table */
+
+
+
+
+
+/* ------------------------------------------
+   LAYOUT
+------------------------------------------- */ 
+#wrap {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto; 
+        text-align: left;                       
+}
+/* header */
+#header {
+        display: flex;
+        background: #F6FAFE;
+        flex-direction: column;
+        height: 130px;  
+        margin: 0; padding: 0; 
+        border-bottom: 1px solid #23253F;
+}
+#header h1#logo-text { 
+        width: 100%;
+        margin: 5px 0 0 0; 
+        padding: 0;         
+        text-align: center;     
+        padding-bottom: 5px; 
+}
+
+
+/*  navigation  */
+#header #nav {
+        align-self: center;
+        margin: 0;      padding: 0;             
+        width: 900px;  
+}
+#header #nav ul {
+        list-style: none;       
+        text-align: center;     
+        height: 45px;
+        margin: 0; padding: 0;  
+}
+#header #nav ul li {
+        display: inline;
+        margin: 0; padding: 0;          
+}
+#header #nav ul li a {
+        margin: 0 8px;
+        padding: 5px 5px;
+        color: #23253f;
+        text-transform: uppercase;    
+        text-decoration: none;          
+}
+
+#header #nav ul li#current a,
+#header #nav ul li a:hover, 
+#header #nav ul li a:active {
+        border: none;
+        background: #23253f;    
+        color: #F6FAFE;    
+}
+
+/* contents */
+#content-outer {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width: 900px;
+        margin: 0; padding: 0;
+        background: #FFFFFF; 
+        box-sizing: border-box;          
+}
+#content-wrap {
+        align-self: center;
+        width: 900px;
+        padding: 0;                 
+}
+.content {
+        margin-left: 15px; 
+
+}
+
+.lefty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+.righty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+
+
+
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 21:59:07 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Sat, 23 Dec 2023 11:46:06 GMT
+ETag: "40-60d2be0cfa318"
+Accept-Ranges: bytes
+Content-Length: 64
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: application/javascript
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+document.write('<h1 id="logo-text">COMP170 - Spring 2024</h1>');HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 22:05:20 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Fri, 09 Feb 2024 10:48:19 GMT
+ETag: "102a-610f0aa8a0e1b"
+Accept-Ranges: bytes
+Content-Length: 4197
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/html; charset=UTF-8
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+        <title>COMP 170</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css"
+                media="screen"
+                href="tufts-comp.css" />
+
+        <script type='text/javascript'>
+
+        var old_shown = 0;
+        //
+        // show old news or hide old news
+        //
+        function toggle_old()
+        {
+                var news_block = document.getElementById('old_news');
+                var click_here = document.getElementById('old_news_toggle');
+
+                if ( old_shown == 0 )
+                {
+                        news_block["style"]["display"] = "block";
+                        click_here.innerHTML = "[hide old news]";
+                        old_shown = 1;
+                }
+                else
+                {
+                        news_block["style"]["display"] = "none";
+                        click_here.innerHTML = "[show old news]";
+                        old_shown = 0;
+                }
+        }
+
+        </script>
+<style>
+.sup {
+vertical-align: super;
+font-size: smaller;
+}
+</style>
+</head>
+<body>
+<div id="wrap"> <a id="top"></a>
+  <div id="header">
+    <script src="semester_header.js"></script>
+    <div  id="nav">
+
+      <ul>
+        <li id="current"><a class="navlinks" href=".">Home</a></li>
+        <li><a href="schedule/schedule.html">Schedule</a></li>
+        <li><a href="policy/policy.html">Policy</a></li>
+        <li><a href="resources/resources.html">Resources</a></li>
+
+      </ul>
+
+    </div>
+  </div>
+  <div id="content-outer" class="clear">
+    <div id="content-wrap" >
+      <div class="content">
+
+      <p>This course is intended as an introduction to the theory
+                of computation for senior level undergraduates and
+                graduate students looking for background material
+                in theory. The major topics within the course
+                include: models of computation, finite automata,
+                regular languages, context free grammars, turing machines,
+                undecidability, infeasibility, diagonalizations, nondeterminism,
+                information theory, time vs space, and complexity classes.</p>
+
+      <p><b>Prerequisites:</b> MATH/COMP 61 and COMP 15 are recommended, but any prior course with rigorous mathematical proofs should suffice</p>
+      
+      <p><b>Primary Textbook: </b><a target="_blank" href="https://www.amazon.com/Introduction-Theory-Computation-Sipser/dp/8131525295/ref=sr_1_1?crid=25SOINE160A9I&keywords=Introduction+to+the+Theory+of+Computation+by+Michael+Sipser&qid=1657724171&s=books&sprefix=introduction+to+the+theory+of+computation+by+michael+sipser%2Cstripbooks%2C67&sr=1-1"><i>Introduction to the Theory of Computation</i></a> by Michael Sipser
+      <br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/G%C3%B6dels-Proof-Ernest-Nagel/dp/0814758371"><i>G&ouml;del's Proof</i></a> by Ernest Nagel and James Newman<br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/Annotated-Turing-Through-Historic-Computability/dp/0470229055/ref=sr_1_1?keywords=the+annotated+turing&qid=1657724316&s=books&sprefix=the+annotataed+tu%2Cstripbooks%2C80&sr=1-1"><i>The Annotated Turing</i></a> by Charles Petzold<br>
+      </p>
+      
+     
+
+<p><b>Instructor:</b> Megan Monroe<br/>
+<b>Email:</b> <a href = "mailto:mmonroe@cs.tufts.edu"> mmonroe@cs.tufts.edu</a><br/>
+<b>Office:</b> Joyce Cummings Center, Room 440D <br/>
+<b>Office Hours:</b> Wednesday, 2:00-4:00pm
+</p>
+
+<p>
+        <b>Class Location:</b> Joyce Cummings Center, Room 270 <br/>
+        <b>Time:</b> (Tues/Thurs) 1:30 - 2:45am<br>
+        <b>Final Exam:</b> Tuesday, May 7th, 3:30-5:30pm
+</p>
+
+<p><b>Course Piazza:</b>
+        <a target="_blank" href="https://piazza.com/tufts/spring2024/cs170">CS170 Spring 2024</a>
+</p>
+
+<p><b>Teaching Fellows:</b>
+<br>Jasper Geer
+<br>Nate Nemeth
+</p>
+
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+<div id="chatbot"><script src="/chatbot.js"></script></div></body>
+</html>
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 22:05:20 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Wed, 13 Jul 2022 11:01:44 GMT
+ETag: "1295-5e3adb5ec0c83"
+Accept-Ranges: bytes
+Content-Length: 4757
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/css
+Keep-Alive: timeout=5, max=99
+Connection: Keep-Alive
+
+
+body {
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #23253f;    
+        background: #FFFFFF;         
+        border-bottom: 30px solid #FFFFFF; 
+        text-align: center;
+        margin: 0;
+}
+/* Links */
+a:link, a:visited { 
+        text-decoration: underline;
+        color: #23253f; 
+}
+a:hover {
+        text-decoration: underline;     
+}
+a.more-link {
+        padding-bottom: 2px;
+        font-weight: bold;      
+        border-bottom: 1px dotted #AE855C;      
+}
+a:hover.more-link {
+        text-decoration: none;
+}
+/* Headers */
+h1, h2, h3 {
+        color: #23253f;
+        margin: 10px 0px 5px 0px;      
+}
+h1 { font-size: 3.3em; font-weight: normal; letter-spacing: -2.0px; }
+h2 { font-size: 2.8em; font-weight: normal; color: #23253f; }
+h3 { font-size: 1.6em; font-weight: normal; letter-spacing: -1.0px; color: #23253f; border-bottom: 1px solid #23253f; padding-bottom: 5px; margin-top: 12px; } 
+
+h4 {
+    color: #23253f;
+    font-size: 1.3em; 
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 0px !important;
+    margin-block-end: .5em;
+}
+
+/* Lists */
+ul, ol {
+        margin: 12px 30px;
+        padding: 0 25px;
+}
+ul { list-style: square; }
+ol { list-style: decimal; }
+
+dt {
+  font-weight: bold;
+  color: #22312F;
+}
+dd {
+  padding-left: 20px; 
+}
+
+p, dl { padding: 12px 25px; }
+
+/* Images */
+img {
+    background: #FFFFFF;
+    border: none;
+    padding: 0;
+}
+
+
+code {
+        font: 500 1em/1.5em 'Lucida Console', 'Courier New', Monospace;
+        font-weight: bold;
+}
+
+blockquote {
+        margin: 12px 12px;
+        padding: 12px 15px 12px 15px;  
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 1.6em;
+        /*font-style: italic;*/
+        font-family: Georgia, 'Times New Roman', Times, Serif;  
+        color: #2C2E3E; 
+        border: 1px solid #DDC3A5;
+        /*background: #F0E5D3 url(../images/quote.gif) no-repeat 15px 15px;*/
+}
+
+strong { font-weight: bold; }
+
+/* start - table */
+table {
+        border-collapse: collapse;
+        margin: 20px 25px;              
+}
+tr { background: #F4EFEA; }
+tr.altrow { background: #F7F3E9;        }
+th, td {
+        text-align: left;                       
+        border-width: 1px;
+        border-style: solid;
+}
+th {
+        color: #273838;
+        background: #E8ECED;/*#9EBCBC;*/
+        padding: .8em 1em;      
+        border-color: #94B3B6 #8AACAF #689195 #8AACAF;  
+}
+td {
+        border-color: #E7DED3;  
+        padding: .7em 1em;      
+}       
+/* end - table */
+
+
+
+
+
+/* ------------------------------------------
+   LAYOUT
+------------------------------------------- */ 
+#wrap {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto; 
+        text-align: left;                       
+}
+/* header */
+#header {
+        display: flex;
+        background: #F6FAFE;
+        flex-direction: column;
+        height: 130px;  
+        margin: 0; padding: 0; 
+        border-bottom: 1px solid #23253F;
+}
+#header h1#logo-text { 
+        width: 100%;
+        margin: 5px 0 0 0; 
+        padding: 0;         
+        text-align: center;     
+        padding-bottom: 5px; 
+}
+
+
+/*  navigation  */
+#header #nav {
+        align-self: center;
+        margin: 0;      padding: 0;             
+        width: 900px;  
+}
+#header #nav ul {
+        list-style: none;       
+        text-align: center;     
+        height: 45px;
+        margin: 0; padding: 0;  
+}
+#header #nav ul li {
+        display: inline;
+        margin: 0; padding: 0;          
+}
+#header #nav ul li a {
+        margin: 0 8px;
+        padding: 5px 5px;
+        color: #23253f;
+        text-transform: uppercase;    
+        text-decoration: none;          
+}
+
+#header #nav ul li#current a,
+#header #nav ul li a:hover, 
+#header #nav ul li a:active {
+        border: none;
+        background: #23253f;    
+        color: #F6FAFE;    
+}
+
+/* contents */
+#content-outer {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width: 900px;
+        margin: 0; padding: 0;
+        background: #FFFFFF; 
+        box-sizing: border-box;          
+}
+#content-wrap {
+        align-self: center;
+        width: 900px;
+        padding: 0;                 
+}
+.content {
+        margin-left: 15px; 
+
+}
+
+.lefty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+.righty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+
+
+
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 22:05:21 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Sat, 23 Dec 2023 11:46:06 GMT
+ETag: "40-60d2be0cfa318"
+Accept-Ranges: bytes
+Content-Length: 64
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: application/javascript
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+document.write('<h1 id="logo-text">COMP170 - Spring 2024</h1>');HTTP/1.1 304 Not Modified
+Date: Sat, 14 Dec 2024 22:08:05 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Connection: Keep-Alive
+Keep-Alive: timeout=5, max=100
+ETag: "dc3-620d8c0f1356c"
+
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 22:38:17 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Fri, 09 Feb 2024 10:48:19 GMT
+ETag: "102a-610f0aa8a0e1b"
+Accept-Ranges: bytes
+Content-Length: 4197
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/html; charset=UTF-8
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+        <title>COMP 170</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css"
+                media="screen"
+                href="tufts-comp.css" />
+
+        <script type='text/javascript'>
+
+        var old_shown = 0;
+        //
+        // show old news or hide old news
+        //
+        function toggle_old()
+        {
+                var news_block = document.getElementById('old_news');
+                var click_here = document.getElementById('old_news_toggle');
+
+                if ( old_shown == 0 )
+                {
+                        news_block["style"]["display"] = "block";
+                        click_here.innerHTML = "[hide old news]";
+                        old_shown = 1;
+                }
+                else
+                {
+                        news_block["style"]["display"] = "none";
+                        click_here.innerHTML = "[show old news]";
+                        old_shown = 0;
+                }
+        }
+
+        </script>
+<style>
+.sup {
+vertical-align: super;
+font-size: smaller;
+}
+</style>
+</head>
+<body>
+<div id="wrap"> <a id="top"></a>
+  <div id="header">
+    <script src="semester_header.js"></script>
+    <div  id="nav">
+
+      <ul>
+        <li id="current"><a class="navlinks" href=".">Home</a></li>
+        <li><a href="schedule/schedule.html">Schedule</a></li>
+        <li><a href="policy/policy.html">Policy</a></li>
+        <li><a href="resources/resources.html">Resources</a></li>
+
+      </ul>
+
+    </div>
+  </div>
+  <div id="content-outer" class="clear">
+    <div id="content-wrap" >
+      <div class="content">
+
+      <p>This course is intended as an introduction to the theory
+                of computation for senior level undergraduates and
+                graduate students looking for background material
+                in theory. The major topics within the course
+                include: models of computation, finite automata,
+                regular languages, context free grammars, turing machines,
+                undecidability, infeasibility, diagonalizations, nondeterminism,
+                information theory, time vs space, and complexity classes.</p>
+
+      <p><b>Prerequisites:</b> MATH/COMP 61 and COMP 15 are recommended, but any prior course with rigorous mathematical proofs should suffice</p>
+      
+      <p><b>Primary Textbook: </b><a target="_blank" href="https://www.amazon.com/Introduction-Theory-Computation-Sipser/dp/8131525295/ref=sr_1_1?crid=25SOINE160A9I&keywords=Introduction+to+the+Theory+of+Computation+by+Michael+Sipser&qid=1657724171&s=books&sprefix=introduction+to+the+theory+of+computation+by+michael+sipser%2Cstripbooks%2C67&sr=1-1"><i>Introduction to the Theory of Computation</i></a> by Michael Sipser
+      <br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/G%C3%B6dels-Proof-Ernest-Nagel/dp/0814758371"><i>G&ouml;del's Proof</i></a> by Ernest Nagel and James Newman<br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/Annotated-Turing-Through-Historic-Computability/dp/0470229055/ref=sr_1_1?keywords=the+annotated+turing&qid=1657724316&s=books&sprefix=the+annotataed+tu%2Cstripbooks%2C80&sr=1-1"><i>The Annotated Turing</i></a> by Charles Petzold<br>
+      </p>
+      
+     
+
+<p><b>Instructor:</b> Megan Monroe<br/>
+<b>Email:</b> <a href = "mailto:mmonroe@cs.tufts.edu"> mmonroe@cs.tufts.edu</a><br/>
+<b>Office:</b> Joyce Cummings Center, Room 440D <br/>
+<b>Office Hours:</b> Wednesday, 2:00-4:00pm
+</p>
+
+<p>
+        <b>Class Location:</b> Joyce Cummings Center, Room 270 <br/>
+        <b>Time:</b> (Tues/Thurs) 1:30 - 2:45am<br>
+        <b>Final Exam:</b> Tuesday, May 7th, 3:30-5:30pm
+</p>
+
+<p><b>Course Piazza:</b>
+        <a target="_blank" href="https://piazza.com/tufts/spring2024/cs170">CS170 Spring 2024</a>
+</p>
+
+<p><b>Teaching Fellows:</b>
+<br>Jasper Geer
+<br>Nate Nemeth
+</p>
+
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+<div id="chatbot"><script src="/chatbot.js"></script></div></body>
+</html>
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 22:38:17 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Wed, 13 Jul 2022 11:01:44 GMT
+ETag: "1295-5e3adb5ec0c83"
+Accept-Ranges: bytes
+Content-Length: 4757
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/css
+Keep-Alive: timeout=5, max=99
+Connection: Keep-Alive
+
+
+body {
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #23253f;    
+        background: #FFFFFF;         
+        border-bottom: 30px solid #FFFFFF; 
+        text-align: center;
+        margin: 0;
+}
+/* Links */
+a:link, a:visited { 
+        text-decoration: underline;
+        color: #23253f; 
+}
+a:hover {
+        text-decoration: underline;     
+}
+a.more-link {
+        padding-bottom: 2px;
+        font-weight: bold;      
+        border-bottom: 1px dotted #AE855C;      
+}
+a:hover.more-link {
+        text-decoration: none;
+}
+/* Headers */
+h1, h2, h3 {
+        color: #23253f;
+        margin: 10px 0px 5px 0px;      
+}
+h1 { font-size: 3.3em; font-weight: normal; letter-spacing: -2.0px; }
+h2 { font-size: 2.8em; font-weight: normal; color: #23253f; }
+h3 { font-size: 1.6em; font-weight: normal; letter-spacing: -1.0px; color: #23253f; border-bottom: 1px solid #23253f; padding-bottom: 5px; margin-top: 12px; } 
+
+h4 {
+    color: #23253f;
+    font-size: 1.3em; 
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 0px !important;
+    margin-block-end: .5em;
+}
+
+/* Lists */
+ul, ol {
+        margin: 12px 30px;
+        padding: 0 25px;
+}
+ul { list-style: square; }
+ol { list-style: decimal; }
+
+dt {
+  font-weight: bold;
+  color: #22312F;
+}
+dd {
+  padding-left: 20px; 
+}
+
+p, dl { padding: 12px 25px; }
+
+/* Images */
+img {
+    background: #FFFFFF;
+    border: none;
+    padding: 0;
+}
+
+
+code {
+        font: 500 1em/1.5em 'Lucida Console', 'Courier New', Monospace;
+        font-weight: bold;
+}
+
+blockquote {
+        margin: 12px 12px;
+        padding: 12px 15px 12px 15px;  
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 1.6em;
+        /*font-style: italic;*/
+        font-family: Georgia, 'Times New Roman', Times, Serif;  
+        color: #2C2E3E; 
+        border: 1px solid #DDC3A5;
+        /*background: #F0E5D3 url(../images/quote.gif) no-repeat 15px 15px;*/
+}
+
+strong { font-weight: bold; }
+
+/* start - table */
+table {
+        border-collapse: collapse;
+        margin: 20px 25px;              
+}
+tr { background: #F4EFEA; }
+tr.altrow { background: #F7F3E9;        }
+th, td {
+        text-align: left;                       
+        border-width: 1px;
+        border-style: solid;
+}
+th {
+        color: #273838;
+        background: #E8ECED;/*#9EBCBC;*/
+        padding: .8em 1em;      
+        border-color: #94B3B6 #8AACAF #689195 #8AACAF;  
+}
+td {
+        border-color: #E7DED3;  
+        padding: .7em 1em;      
+}       
+/* end - table */
+
+
+
+
+
+/* ------------------------------------------
+   LAYOUT
+------------------------------------------- */ 
+#wrap {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto; 
+        text-align: left;                       
+}
+/* header */
+#header {
+        display: flex;
+        background: #F6FAFE;
+        flex-direction: column;
+        height: 130px;  
+        margin: 0; padding: 0; 
+        border-bottom: 1px solid #23253F;
+}
+#header h1#logo-text { 
+        width: 100%;
+        margin: 5px 0 0 0; 
+        padding: 0;         
+        text-align: center;     
+        padding-bottom: 5px; 
+}
+
+
+/*  navigation  */
+#header #nav {
+        align-self: center;
+        margin: 0;      padding: 0;             
+        width: 900px;  
+}
+#header #nav ul {
+        list-style: none;       
+        text-align: center;     
+        height: 45px;
+        margin: 0; padding: 0;  
+}
+#header #nav ul li {
+        display: inline;
+        margin: 0; padding: 0;          
+}
+#header #nav ul li a {
+        margin: 0 8px;
+        padding: 5px 5px;
+        color: #23253f;
+        text-transform: uppercase;    
+        text-decoration: none;          
+}
+
+#header #nav ul li#current a,
+#header #nav ul li a:hover, 
+#header #nav ul li a:active {
+        border: none;
+        background: #23253f;    
+        color: #F6FAFE;    
+}
+
+/* contents */
+#content-outer {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width: 900px;
+        margin: 0; padding: 0;
+        background: #FFFFFF; 
+        box-sizing: border-box;          
+}
+#content-wrap {
+        align-self: center;
+        width: 900px;
+        padding: 0;                 
+}
+.content {
+        margin-left: 15px; 
+
+}
+
+.lefty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+.righty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+
+
+
+HTTP/1.1 200 OK
+Date: Sat, 14 Dec 2024 22:38:17 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Sat, 23 Dec 2023 11:46:06 GMT
+ETag: "40-60d2be0cfa318"
+Accept-Ranges: bytes
+Content-Length: 64
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: application/javascript
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+document.write('<h1 id="logo-text">COMP170 - Spring 2024</h1>');HTTP/1.1 304 Not Modified
+Date: Sat, 14 Dec 2024 22:40:40 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Connection: Keep-Alive
+Keep-Alive: timeout=5, max=100
+ETag: "dc3-620d8c0f1356c"
+
+HTTP/1.1 200 OK
+Date: Sun, 15 Dec 2024 02:13:26 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Fri, 09 Feb 2024 10:48:19 GMT
+ETag: "102a-610f0aa8a0e1b"
+Accept-Ranges: bytes
+Content-Length: 4197
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/html; charset=UTF-8
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+        <title>COMP 170</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css"
+                media="screen"
+                href="tufts-comp.css" />
+
+        <script type='text/javascript'>
+
+        var old_shown = 0;
+        //
+        // show old news or hide old news
+        //
+        function toggle_old()
+        {
+                var news_block = document.getElementById('old_news');
+                var click_here = document.getElementById('old_news_toggle');
+
+                if ( old_shown == 0 )
+                {
+                        news_block["style"]["display"] = "block";
+                        click_here.innerHTML = "[hide old news]";
+                        old_shown = 1;
+                }
+                else
+                {
+                        news_block["style"]["display"] = "none";
+                        click_here.innerHTML = "[show old news]";
+                        old_shown = 0;
+                }
+        }
+
+        </script>
+<style>
+.sup {
+vertical-align: super;
+font-size: smaller;
+}
+</style>
+</head>
+<body>
+<div id="wrap"> <a id="top"></a>
+  <div id="header">
+    <script src="semester_header.js"></script>
+    <div  id="nav">
+
+      <ul>
+        <li id="current"><a class="navlinks" href=".">Home</a></li>
+        <li><a href="schedule/schedule.html">Schedule</a></li>
+        <li><a href="policy/policy.html">Policy</a></li>
+        <li><a href="resources/resources.html">Resources</a></li>
+
+      </ul>
+
+    </div>
+  </div>
+  <div id="content-outer" class="clear">
+    <div id="content-wrap" >
+      <div class="content">
+
+      <p>This course is intended as an introduction to the theory
+                of computation for senior level undergraduates and
+                graduate students looking for background material
+                in theory. The major topics within the course
+                include: models of computation, finite automata,
+                regular languages, context free grammars, turing machines,
+                undecidability, infeasibility, diagonalizations, nondeterminism,
+                information theory, time vs space, and complexity classes.</p>
+
+      <p><b>Prerequisites:</b> MATH/COMP 61 and COMP 15 are recommended, but any prior course with rigorous mathematical proofs should suffice</p>
+      
+      <p><b>Primary Textbook: </b><a target="_blank" href="https://www.amazon.com/Introduction-Theory-Computation-Sipser/dp/8131525295/ref=sr_1_1?crid=25SOINE160A9I&keywords=Introduction+to+the+Theory+of+Computation+by+Michael+Sipser&qid=1657724171&s=books&sprefix=introduction+to+the+theory+of+computation+by+michael+sipser%2Cstripbooks%2C67&sr=1-1"><i>Introduction to the Theory of Computation</i></a> by Michael Sipser
+      <br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/G%C3%B6dels-Proof-Ernest-Nagel/dp/0814758371"><i>G&ouml;del's Proof</i></a> by Ernest Nagel and James Newman<br>
+      <b>Other Reading: </b><a target="_blank" href="https://www.amazon.com/Annotated-Turing-Through-Historic-Computability/dp/0470229055/ref=sr_1_1?keywords=the+annotated+turing&qid=1657724316&s=books&sprefix=the+annotataed+tu%2Cstripbooks%2C80&sr=1-1"><i>The Annotated Turing</i></a> by Charles Petzold<br>
+      </p>
+      
+     
+
+<p><b>Instructor:</b> Megan Monroe<br/>
+<b>Email:</b> <a href = "mailto:mmonroe@cs.tufts.edu"> mmonroe@cs.tufts.edu</a><br/>
+<b>Office:</b> Joyce Cummings Center, Room 440D <br/>
+<b>Office Hours:</b> Wednesday, 2:00-4:00pm
+</p>
+
+<p>
+        <b>Class Location:</b> Joyce Cummings Center, Room 270 <br/>
+        <b>Time:</b> (Tues/Thurs) 1:30 - 2:45am<br>
+        <b>Final Exam:</b> Tuesday, May 7th, 3:30-5:30pm
+</p>
+
+<p><b>Course Piazza:</b>
+        <a target="_blank" href="https://piazza.com/tufts/spring2024/cs170">CS170 Spring 2024</a>
+</p>
+
+<p><b>Teaching Fellows:</b>
+<br>Jasper Geer
+<br>Nate Nemeth
+</p>
+
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+<div id="chatbot"><script src="/chatbot.js"></script></div></body>
+</html>
+HTTP/1.1 200 OK
+Date: Sun, 15 Dec 2024 02:13:28 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Last-Modified: Wed, 13 Jul 2022 11:01:44 GMT
+ETag: "1295-5e3adb5ec0c83"
+Accept-Ranges: bytes
+Content-Length: 4757
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+Content-Type: text/css
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+
+
+body {
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #23253f;    
+        background: #FFFFFF;         
+        border-bottom: 30px solid #FFFFFF; 
+        text-align: center;
+        margin: 0;
+}
+/* Links */
+a:link, a:visited { 
+        text-decoration: underline;
+        color: #23253f; 
+}
+a:hover {
+        text-decoration: underline;     
+}
+a.more-link {
+        padding-bottom: 2px;
+        font-weight: bold;      
+        border-bottom: 1px dotted #AE855C;      
+}
+a:hover.more-link {
+        text-decoration: none;
+}
+/* Headers */
+h1, h2, h3 {
+        color: #23253f;
+        margin: 10px 0px 5px 0px;      
+}
+h1 { font-size: 3.3em; font-weight: normal; letter-spacing: -2.0px; }
+h2 { font-size: 2.8em; font-weight: normal; color: #23253f; }
+h3 { font-size: 1.6em; font-weight: normal; letter-spacing: -1.0px; color: #23253f; border-bottom: 1px solid #23253f; padding-bottom: 5px; margin-top: 12px; } 
+
+h4 {
+    color: #23253f;
+    font-size: 1.3em; 
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 0px !important;
+    margin-block-end: .5em;
+}
+
+/* Lists */
+ul, ol {
+        margin: 12px 30px;
+        padding: 0 25px;
+}
+ul { list-style: square; }
+ol { list-style: decimal; }
+
+dt {
+  font-weight: bold;
+  color: #22312F;
+}
+dd {
+  padding-left: 20px; 
+}
+
+p, dl { padding: 12px 25px; }
+
+/* Images */
+img {
+    background: #FFFFFF;
+    border: none;
+    padding: 0;
+}
+
+
+code {
+        font: 500 1em/1.5em 'Lucida Console', 'Courier New', Monospace;
+        font-weight: bold;
+}
+
+blockquote {
+        margin: 12px 12px;
+        padding: 12px 15px 12px 15px;  
+        font-weight: normal;
+        font-size: 17px;
+        line-height: 1.6em;
+        /*font-style: italic;*/
+        font-family: Georgia, 'Times New Roman', Times, Serif;  
+        color: #2C2E3E; 
+        border: 1px solid #DDC3A5;
+        /*background: #F0E5D3 url(../images/quote.gif) no-repeat 15px 15px;*/
+}
+
+strong { font-weight: bold; }
+
+/* start - table */
+table {
+        border-collapse: collapse;
+        margin: 20px 25px;              
+}
+tr { background: #F4EFEA; }
+tr.altrow { background: #F7F3E9;        }
+th, td {
+        text-align: left;                       
+        border-width: 1px;
+        border-style: solid;
+}
+th {
+        color: #273838;
+        background: #E8ECED;/*#9EBCBC;*/
+        padding: .8em 1em;      
+        border-color: #94B3B6 #8AACAF #689195 #8AACAF;  
+}
+td {
+        border-color: #E7DED3;  
+        padding: .7em 1em;      
+}       
+/* end - table */
+
+
+
+
+
+/* ------------------------------------------
+   LAYOUT
+------------------------------------------- */ 
+#wrap {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto; 
+        text-align: left;                       
+}
+/* header */
+#header {
+        display: flex;
+        background: #F6FAFE;
+        flex-direction: column;
+        height: 130px;  
+        margin: 0; padding: 0; 
+        border-bottom: 1px solid #23253F;
+}
+#header h1#logo-text { 
+        width: 100%;
+        margin: 5px 0 0 0; 
+        padding: 0;         
+        text-align: center;     
+        padding-bottom: 5px; 
+}
+
+
+/*  navigation  */
+#header #nav {
+        align-self: center;
+        margin: 0;      padding: 0;             
+        width: 900px;  
+}
+#header #nav ul {
+        list-style: none;       
+        text-align: center;     
+        height: 45px;
+        margin: 0; padding: 0;  
+}
+#header #nav ul li {
+        display: inline;
+        margin: 0; padding: 0;          
+}
+#header #nav ul li a {
+        margin: 0 8px;
+        padding: 5px 5px;
+        color: #23253f;
+        text-transform: uppercase;    
+        text-decoration: none;          
+}
+
+#header #nav ul li#current a,
+#header #nav ul li a:hover, 
+#header #nav ul li a:active {
+        border: none;
+        background: #23253f;    
+        color: #F6FAFE;    
+}
+
+/* contents */
+#content-outer {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width: 900px;
+        margin: 0; padding: 0;
+        background: #FFFFFF; 
+        box-sizing: border-box;          
+}
+#content-wrap {
+        align-self: center;
+        width: 900px;
+        padding: 0;                 
+}
+.content {
+        margin-left: 15px; 
+
+}
+
+.lefty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+.righty {
+    width: 50%;
+    float: left;
+    margin-bottom: 1em;
+}
+
+
+
+
+HTTP/1.1 304 Not Modified
+Date: Sun, 15 Dec 2024 02:14:54 GMT
+Server: Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips Phusion_Passenger/6.0.22 PHP/5.4.16 mod_wsgi/4.7.1 Python/3.9
+Connection: Keep-Alive
+Keep-Alive: timeout=5, max=100
+ETag: "dc3-620d8c0f1356c"
+
